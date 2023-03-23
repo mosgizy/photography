@@ -26,10 +26,18 @@ const NavSlider = ({
 				/>
 			</div>
 			<nav className="flex flex-col gap-8 text-primary mt-10 text-2xl">
-				<Link href="/">Home</Link>
-				<Link href="/auction">Auction</Link>
-				<Link href="marketplace">Marketplace</Link>
-				<Link href="drops">Drops</Link>
+				<Link href="/" onClick={handleToggle}>
+					Home
+				</Link>
+				<Link href="auction" onClick={handleToggle}>
+					Auction
+				</Link>
+				<Link href="marketplace" onClick={handleToggle}>
+					Marketplace
+				</Link>
+				<Link href="drops" onClick={handleToggle}>
+					Drops
+				</Link>
 			</nav>
 			<div className="absolute bottom-12 right-6 bg-[#3341c1] rounded-full w-16 h-16 flex justify-center items-center">
 				<FontAwesomeIcon icon={faMessage} className="h-6 text-white" />

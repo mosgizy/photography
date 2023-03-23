@@ -5,15 +5,15 @@ import Product from './component/Product';
 import Auction from './component/Auction';
 import Linking from './component/Linking';
 import Creators from './component/Creators';
+import { carouselI, featuredI } from '../../resources/interfaces';
+import { PRODUCT_URL, CAROUSEL_URL } from '../../resources/constant';
 
 const poppins = Poppins({ subsets: ['latin'], weight: '400' });
 
-const carouselUrl = 'carousel.json';
-const productUrl = 'products.json';
-
 const Home = async () => {
-	const { carousel } = await getData(carouselUrl);
-	const { featured_products } = await getData(productUrl);
+	const { carousel }: { carousel: carouselI[] } = await getData(CAROUSEL_URL);
+	const { featured_products }: { featured_products: featuredI[] } =
+		await getData(PRODUCT_URL);
 
 	return (
 		<section className={poppins.className}>
@@ -46,10 +46,9 @@ const Home = async () => {
 				<h1 className="text-3xl font-bold">Featured products</h1>
 				<div className="mt-8 flex flex-col gap-12">
 					{featured_products.map(
-						(featured_product: { id: string; url: string }) => {
-							return (
-								<Product key={featured_product.id} url={featured_product.url} />
-							);
+						(featured_product: { id: string; url: string; name: string }) => {
+							const { id, url, name } = featured_product;
+							return <Product key={id} url={url} name={name} />;
 						}
 					)}
 				</div>

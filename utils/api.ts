@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = 'https://gist.githubusercontent.com/eniiku/65a95533de1f005eee35d5eb91f3e141/raw/439bc2dd8693b490539eae236918f4a53dd17457/';
+const baseUrl = 'https://gist.githubusercontent.com/mosgizy/fecbe2da3715d3f85becbed4e0676999/raw/18404c47aadcf82e9b2ebbbd291e19b363da9026/';
 
 const getData = async (url: string) => {
     
@@ -13,3 +13,4 @@ const getData = async (url: string) => {
 }
 
 export default getData;
+
