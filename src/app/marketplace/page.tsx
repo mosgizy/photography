@@ -18,14 +18,16 @@ const page = async () => {
 				</p>
 				<p className="text-notActive text-base">Showing 1-5 of 18 results</p>
 			</header>
-			<div className="flex justify-between py-3 px-3 text-lg bg-white shadow-3xl mt-4 mb-5">
-				<div className="flex gap-3 items-center">
-					<span>Filters</span>
-					<FontAwesomeIcon icon={faChevronDown} />
-				</div>
-				<div className="flex gap-3 items-center">
-					<span>Sort by</span>
-					<FontAwesomeIcon icon={faChevronDown} />
+			<div className="px-2">
+				<div className="flex justify-between py-3 px-3 text-lg bg-white shadow-3xl mt-4 mb-5 rounded">
+					<div className="flex gap-3 items-center">
+						<span>Filters</span>
+						<FontAwesomeIcon icon={faChevronDown} />
+					</div>
+					<div className="flex gap-3 items-center">
+						<span>Sort by</span>
+						<FontAwesomeIcon icon={faChevronDown} />
+					</div>
 				</div>
 			</div>
 			<div className="px-6 flex flex-col gap-5">
