@@ -1,7 +1,5 @@
-'use client';
-
 const page = () => {
-	return <div>auction</div>;
+	return <div>Cart</div>;
 };
 
 export default page;

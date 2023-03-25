@@ -6,7 +6,6 @@ import {
 	faChevronLeft,
 	faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
-import Image from 'next/image';
 import Carousel from 'nuka-carousel/lib/carousel';
 import { productI } from '../../../../resources/interfaces';
 import ProductCard from './ProductCard';

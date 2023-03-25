@@ -26,15 +26,21 @@ export interface dropsI{
     creator: string;
     date: {
         day: number;
-        mponth: string;
+        month: string;
         time: string;
         timezone: string;
-    }
+    };
+    url:string;
 }
 
 export interface carouselI{
     id: string;
     url:string;
+}
+
+export interface productBidI extends carouselI { 
+    name: string;
+    current:string;
 }
 
 export interface bidsI{

@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import NavSlider from './NavSlider';
 import { useState } from 'react';
+import Link from 'next/link';
 
 const NavBar = () => {
 	const [toggle, setToggle] = useState<boolean>(false);
@@ -30,13 +31,13 @@ const NavBar = () => {
 						className="h-5 cursor-pointer text-primary"
 						icon={faMagnifyingGlass}
 					/>
-					<div className="relative h-5">
+					<Link href="cart" className="relative h-5">
 						<span className="absolute right-0 -top-1 rounded-full w-1 h-1 bg-notification"></span>
 						<FontAwesomeIcon
 							className="h-5 cursor-pointer text-primary"
 							icon={faCartShopping}
 						/>
-					</div>
+					</Link>
 				</div>
 			</div>
 			<NavSlider toggle={toggle} handleToggle={handleToggle} />
