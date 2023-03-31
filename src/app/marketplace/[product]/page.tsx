@@ -1,12 +1,9 @@
-import Image from 'next/image';
 import getData from '../../../../utils/api';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import Info from '../components/Info';
 import Collections from '../components/Collections';
 import { productI } from '../../../../resources/interfaces';
 import { PRODUCT_URL } from '../../../../resources/constant';
+import Item from '../components/Item';
 
 const page = async ({ params }: { params: { product: string } }) => {
 	const { products }: { products: productI[] } = await getData(PRODUCT_URL);
@@ -21,11 +18,6 @@ const page = async ({ params }: { params: { product: string } }) => {
 		return product.name !== path;
 	});
 
-	const { id, name, creator, origin, views, price, size, url } =
-		currentProduct[0];
-
-	console.log(currentProduct);
-
 	return (
 		<section>
 			<header className="px-2">
@@ -35,34 +27,7 @@ const page = async ({ params }: { params: { product: string } }) => {
 				</p>
 			</header>
 			<div className="pt-6 px-6">
-				<div>
-					<Image src={url} alt={name} width="500" height="400" />
-				</div>
-				<div className="flex justify-between text-primary text-base uppercase mt-5 mb-6">
-					<span>{name}</span>
-					<span>${price.usd}</span>
-				</div>
-				<div className="text-fadeText flex flex-col gap-4">
-					<p className="text-black">
-						Creator :{' '}
-						<span className="text-nameColor capitalize">{creator}</span>
-					</p>
-					<p className="capitalize">{origin}</p>
-					<p>Total views : {views}</p>
-					<div className="flex gap-4 items-center">
-						<FontAwesomeIcon icon={faMinus} />
-						<span className="text-4xl">1</span>
-						<FontAwesomeIcon icon={faPlus} />
-					</div>
-					<div className="flex gap-4 items-center">
-						<button className="py-4 px-12 bg-buttonColor rounded text-white text-lg">
-							Add to cart
-						</button>
-						<div className="border border-darkText rounded py-3 px-5 cursor-pointer">
-							<FontAwesomeIcon icon={faHeart} className="w-[25px] h-[27px]" />
-						</div>
-					</div>
-				</div>
+				<Item product={currentProduct[0]} />
 			</div>
 			<div className="mt-12">
 				<Info link={'Description'} />

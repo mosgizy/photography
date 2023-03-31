@@ -1,3 +1,4 @@
+import Providers from '../../store/provider';
 import Footer from './component/Footer';
 import NavBar from './component/NavBar';
 import './globals.css';
@@ -15,9 +16,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className="mb-10">
-				<NavBar />
-				<main>{children}</main>
-				<Footer />
+				<Providers>
+					<NavBar />
+					<main>{children}</main>
+					<Footer />
+				</Providers>
 			</body>
 		</html>
 	);

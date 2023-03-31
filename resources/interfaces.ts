@@ -63,6 +63,19 @@ export interface bidsI{
     url: string;
 }
 
-interface dateI{
+export interface cartItemI{
+    id:string;
+    url: string;
+    cost:number;
+    name: string;
+    creator: string;
+    quantity: number;
+}
 
+export interface cartI{
+    items: cartItemI[];
+    totalItems: number;
+    totalPrice: number;
+    shipping: number;
+    grandTotal: number;
 }
