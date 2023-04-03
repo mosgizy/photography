@@ -17,4 +17,40 @@
 		@apply text-xl;
 		@apply font-bold;
 	}
+
+	svg {
+		@apply w-4 h-4;
+	}
+
+	input {
+		@apply cursor-pointer;
+	}
+}
+
+@layer components {
+	.section {
+		@apply px-3 mt-24;
+	}
+	.input-container {
+		@apply flex flex-col gap-2 text-[#888888] text-lg;
+	}
+	.input {
+		@apply border-[0.5px] border-[#747474] rounded-xl w-full bg-[#f2f2f2] px-4 py-2 text-base outline-none;
+	}
+
+	.select {
+		@apply py-[10px];
+	}
+
+	.btn-container {
+		@apply flex flex-col items-center justify-center gap-6 mt-10;
+	}
+
+	.btn {
+		@apply rounded-md bg-buttonColor text-white py-3 px-10;
+	}
+
+	.link {
+		@apply text-nameColor underline text-lg font-normal;
+	}
 }

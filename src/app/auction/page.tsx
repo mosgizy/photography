@@ -7,10 +7,8 @@ const page = async () => {
 	const { products, bids }: { products: productBidI[]; bids: bidsI[] } =
 		await getData(AUCTION_URL);
 
-	console.log(products);
-
 	return (
-		<section className="px-2">
+		<section className="section">
 			<AuctionPage products={products} bids={bids} />
 		</section>
 	);

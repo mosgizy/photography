@@ -14,7 +14,7 @@ const Page = () => {
 	);
 
 	return (
-		<section className="px-3">
+		<section className="section">
 			<header>
 				<p className="text-fadeText">
 					Home/ Marketplace/ <span className="text-black">Cart</span>
@@ -44,18 +44,13 @@ const Page = () => {
 					<span>${totalCost + 2.5}</span>
 				</p>
 			</div>
-			<div className="mt-10">
-				<div className="flex flex-col items-center justify-center gap-6">
-					<button className="rounded-md bg-buttonColor text-white py-3 px-10">
-						Proceed to checkout
-					</button>
-					<Link
-						href="marketplace"
-						className="text-nameColor underline text-lg font-normal"
-					>
-						Continue shopping
-					</Link>
-				</div>
+			<div className="btn-container">
+				<button className="btn">
+					<Link href="cart/shipping">Proceed to checkout</Link>
+				</button>
+				<Link href="marketplace" className="link">
+					Continue shopping
+				</Link>
 			</div>
 		</section>
 	);

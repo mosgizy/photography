@@ -19,7 +19,7 @@ const page = async ({ params }: { params: { product: string } }) => {
 	});
 
 	return (
-		<section>
+		<section className="section">
 			<header className="px-2">
 				<p className="text-notActive text-lg border-primary border-b pb-4">
 					Home/ Marketplace/ Editorials/{' '}

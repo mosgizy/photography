@@ -1,10 +1,27 @@
 'use client';
 
 import Link from 'next/link';
+import { motion, Variants } from 'framer-motion';
 
 const Auction = () => {
+	const cardVariants: Variants = {
+		offscreen: {
+			x: 500,
+		},
+		onscreen: {
+			x: 0,
+			transition: {
+				type: 'spring',
+				bounce: 0.4,
+				duration: 0.8,
+			},
+		},
+	};
 	return (
-		<div className="bg-auction-linear bg-contain my-24 w-full text-white py-8 px-8">
+		<motion.div
+			className="bg-auction-linear bg-contain my-24 w-full text-white py-8 px-8 origin-bottom"
+			variants={cardVariants}
+		>
 			<div className="flex flex-col gap-3 bg-auction-image py-8 px-2">
 				<h2 className="uppercase flex items-center gap-5">
 					<div className="basis-10">
@@ -34,7 +51,7 @@ const Auction = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

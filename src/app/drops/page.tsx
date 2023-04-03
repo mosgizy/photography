@@ -9,7 +9,7 @@ const page = async () => {
 	const drops: dropsI[] = await getData(DROPS_URL);
 
 	return (
-		<section>
+		<section className="section">
 			<header className="flex justify-center">
 				<div className="flex flex-col gap-6 justify-center mt-9 mb-8 w-[30ch] text-center">
 					<h1>Upcoming drops</h1>

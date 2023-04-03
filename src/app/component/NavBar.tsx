@@ -19,7 +19,7 @@ const NavBar = () => {
 
 	return (
 		<div className="">
-			<div className="flex justify-between items-center py-7 px-4">
+			<div className="flex justify-between items-center bg-white py-7 px-4 fixed top-0 z-40 w-full">
 				<FontAwesomeIcon
 					className="h-5 cursor-pointer text-primary"
 					icon={faBars}
