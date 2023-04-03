@@ -65,7 +65,7 @@ const Livestream = ({
 	);
 
 	return (
-		<div className="absolute min-h-screen inset-0 z-30 text-white overflow-hidden">
+		<div className="absolute min-h-screen inset-0 z-50 text-white overflow-hidden">
 			<div className="h-full">
 				<Image
 					src={url}
