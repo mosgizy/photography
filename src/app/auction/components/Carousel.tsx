@@ -25,7 +25,7 @@ const CarouselWrapper = ({
 			fill: '#B8BCB5',
 			top: 'unset',
 			bottom: '-2rem',
-			position: 'relative',
+			// position: 'relative',
 			display: 'flex',
 			gap: '.5rem',
 		},

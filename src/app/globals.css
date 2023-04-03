@@ -54,3 +54,13 @@
 		@apply text-nameColor underline text-lg font-normal;
 	}
 }
+
+.slider-control-bottomcenter ul {
+	bottom: -1.6rem !important;
+	top: unset !important;
+}
+
+.slider-control-bottomcenter svg {
+	width: unset !important;
+	height: unset !important;
+}
