@@ -3,8 +3,8 @@ import NavBar from './component/NavBar';
 import './globals.css';
 
 export const metadata = {
-	title: 'Create Next App',
-	description: 'Lets build a photograper profile',
+	title: 'The Hills',
+	description: 'Welcome to The Hills',
 };
 
 export default function RootLayout({
