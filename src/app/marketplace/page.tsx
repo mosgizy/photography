@@ -4,6 +4,7 @@ import getData from '../../../utils/api';
 import { productI } from '../../../resources/interfaces';
 import { PRODUCT_URL } from '../../../resources/constant';
 import ProductCard from './components/ProductCard';
+import Footer from '../component/Footer';
 
 const page = async () => {
 	const { products }: { products: productI[] } = await getData(PRODUCT_URL);
@@ -48,6 +49,7 @@ const page = async () => {
 					<FontAwesomeIcon icon={faArrowRight} />
 				</div>
 			</div>
+			<Footer />
 		</section>
 	);
 };

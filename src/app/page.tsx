@@ -3,6 +3,7 @@ import getData from '../../utils/api';
 import { carouselI, featuredI } from '../../resources/interfaces';
 import { PRODUCT_URL, CAROUSEL_URL } from '../../resources/constant';
 import HomePage from './component/HomePage';
+import Footer from './component/Footer';
 
 const poppins = Poppins({ subsets: ['latin'], weight: '400' });
 
@@ -14,6 +15,7 @@ const Home = async () => {
 	return (
 		<section className={`section ${poppins.className}`}>
 			<HomePage featuredProducts={featured_products} carousel={carousel} />
+			<Footer />
 		</section>
 	);
 };
