@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className="mb-10">
+			<body className="mb-10 overflow-x-hidden">
 				<Providers>
 					<NavBar />
 					<main>{children}</main>

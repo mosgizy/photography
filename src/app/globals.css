@@ -53,6 +53,10 @@
 	.link {
 		@apply text-nameColor underline text-lg font-normal;
 	}
+
+	.navLink {
+		@apply hover:underline transition-all;
+	}
 }
 
 .slider-control-bottomcenter ul {

@@ -6,7 +6,7 @@ import Linking from './../component/Linking';
 import Creators from './../component/Creators';
 import Image from 'next/image';
 import { carouselI, featuredI } from '../../../resources/interfaces';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, useTransform, useScroll } from 'framer-motion';
 
 const HomePage = ({
 	featuredProducts,
@@ -29,18 +29,29 @@ const HomePage = ({
 		},
 	};
 
+	const shuffle = (array: any[]) => {
+		return array
+			?.map((value: any) => ({ value, sort: Math.random() }))
+			.sort((a: any, b: any) => a.sort - b.sort)
+			.map(({ value }: any) => value);
+	};
+
+	const { scrollYProgress } = useScroll();
+	const yPos = useTransform(scrollYProgress, [0, 1000], [0, -700]);
+	// console.log(yPos);
+
 	return (
 		<>
 			<header className="flex flex-col gap-5 text-center px-5">
-				<h1 className="text-3xl">
-					Photography is poetry and beautiful untold stories
+				<h1 className="text-3xl md:text-[80px] md:max-w-5xl text-center md:leading-[100px] md:px-12 md:mx-auto">
+					Photography is poetry & beautiful untold stories
 				</h1>
-				<p className="text-lg">
+				<p className="text-lg md:max-w-4xl md:mx-auto md:mt-6">
 					Flip through more than 10,000 vintage shots, old photograghs, historic
 					images and captures seamlessly in one place. Register to get top
 					access.
 				</p>
-				<div className="relative flex justify-center h-[320px] mt-6">
+				<div className="relative flex justify-center h-[320px] mt-6 md:hidden">
 					{carousel.map((data: { id: string; url: string }, index: number) => {
 						return (
 							<div key={data.id} className="absolute w-[320px] h-[280px]">
@@ -55,20 +66,119 @@ const HomePage = ({
 											: index === 1
 											? 'rotate-[9.31deg]'
 											: ''
-									}`}
+									} md:w-[356px] md:h-[444px]`}
 								/>
 							</div>
 						);
 					})}
 				</div>
+				<div className="hidden md:block mt-6">
+					<div className="flex gap-4">
+						<div className="w-[358px] h-[332px] relative translate-y-20 overflow-hidden">
+							{shuffle(carousel).map(
+								(data: { id: string; url: string }, index: number) => {
+									return (
+										<motion.div
+											key={data.id}
+											style={{ y: yPos }}
+											transition={{
+												ease: 'linear',
+												duration: 2,
+												x: { duration: 1 },
+											}}
+											className={`h-full origin-right transition-all`}
+										>
+											<Image
+												src={data.url}
+												fill
+												alt="carousel"
+												className={`aspect-square`}
+											/>
+										</motion.div>
+									);
+								}
+							)}
+						</div>
+						<div className="w-[358px] h-[428x] relative translate-y-14 overflow-hidden">
+							{shuffle(carousel).map(
+								(data: { id: string; url: string }, index: number) => {
+									return (
+										<motion.div
+											key={data.id}
+											style={{ y: yPos }}
+											transition={{ duration: 2, delay: 20 }}
+											className={`h-full origin-right transition-all`}
+										>
+											<Image
+												src={data.url}
+												fill
+												alt="carousel"
+												className={`aspect-square`}
+											/>
+										</motion.div>
+									);
+								}
+							)}
+						</div>
+						<div className="w-[358px] h-[444px] relative -translate-y-4 overflow-hidden">
+							{shuffle(carousel).map(
+								(data: { id: string; url: string }, index: number) => {
+									return (
+										<motion.div
+											key={data.id}
+											style={{ y: yPos }}
+											transition={{ duration: 5, delay: 1 }}
+											className={`h-full origin-right transition-all`}
+										>
+											<Image
+												src={data.url}
+												fill
+												alt="carousel"
+												className={`aspect-square`}
+											/>
+										</motion.div>
+									);
+								}
+							)}
+						</div>
+						<div className="w-[358px] h-[428px] relative translate-y-11 overflow-hidden">
+							{shuffle(carousel).map(
+								(data: { id: string; url: string }, index: number) => {
+									return (
+										<motion.div
+											key={data.id}
+											style={{ y: yPos }}
+											transition={{ duration: 7.5, delay: 10 }}
+											className={`h-full origin-right transition-all`}
+										>
+											<Image
+												src={data.url}
+												fill
+												alt="carousel"
+												className={`aspect-square`}
+											/>
+										</motion.div>
+									);
+								}
+							)}
+						</div>
+					</div>
+				</div>
 			</header>
-			<div className="px-3 mt-24">
-				<h1 className="text-3xl font-bold">Featured products</h1>
+			<div className="px-3 mt-24 md:mt-36  md:max-w-7xl mx-auto">
+				<h1 className="text-3xl font-bold md:text-[40px] md:font-medium">
+					Featured products
+				</h1>
 				<div className="mt-8 flex flex-col gap-12">
 					{featuredProducts.map(
 						(featured_product: { id: string; url: string; name: string }) => {
 							const { id, url, name } = featured_product;
-							return <Product key={id} url={url} name={name} />;
+							return (
+								<div key={id}>
+									<hr className="hidden md:block mb-12 text-primary" />
+									<Product url={url} name={name} />
+								</div>
+							);
 						}
 					)}
 				</div>

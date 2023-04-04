@@ -34,8 +34,11 @@ const Product = ({ url, name }: { url: string; name: string }) => {
 			viewport={{ once: true, amount: 0.8 }}
 			className="flex flex-col gap-4"
 		>
-			<motion.div variants={cardVariants}>
-				<div className="relative">
+			<motion.div
+				variants={cardVariants}
+				className="flex flex-col gap-5 md:flex-row"
+			>
+				<div className="relative md:flex-[1_1_50%]">
 					<Image
 						className="w-full h-[255px]"
 						src={url}
@@ -43,9 +46,9 @@ const Product = ({ url, name }: { url: string; name: string }) => {
 						width={500}
 						height={500}
 					/>
-					<div className="flex justify-center items-center absolute inset-0 z-30 bg-[rgba(0,0,0,0.6)]">
+					<div className="flex justify-center items-center absolute inset-0 z-30 bg-[rgba(0,0,0,0.6)] md:hidden">
 						<div className="flex flex-col gap-10 max-w-max justify-center text-white">
-							<h1 className="text-4xl">Boolean Egyptian</h1>
+							<h1 className="text-4xl capitalize">{name}</h1>
 							<Link
 								href={`/marketplace/${name}`}
 								className="flex justify-center items-center self-end text-5xl w-[78px] h-[78px] border rounded-full border-white cursor-pointer"
@@ -55,26 +58,39 @@ const Product = ({ url, name }: { url: string; name: string }) => {
 						</div>
 					</div>
 				</div>
-				<p className="text-fadeText">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
-					purus sit amet luctus venenatis, lectus magna fringilla urna,
-					porttitor rhoncus dolor pur
-				</p>
-				<div className="flex gap-6 items-center border-b max-w-max pb-5">
-					<div className="flex -space-x-4 rounded-none overflow-hidden">
-						{creators.map((creator, index) => {
-							return (
-								<Image
-									key={index}
-									src={creator}
-									alt="creator"
-									width={42}
-									height={42}
-								/>
-							);
-						})}
+				<div className="flex flex-col gap-4 md:justify-between md:flex-[1_1_50%]">
+					<h1 className="capitalize hidden md:block">{name}</h1>
+					<p className="text-fadeText">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
+						purus sit amet luctus venenatis, lectus magna fringilla urna,
+						porttitor rhoncus dolor pur
+					</p>
+					<div className="flex items-center justify-between">
+						<div className="flex gap-6 items-center border-b md:border-none max-w-max pb-5 md:pb-0">
+							<div className="flex -space-x-4 rounded-none overflow-hidden">
+								{creators.map((creator, index) => {
+									return (
+										<Image
+											key={index}
+											src={creator}
+											alt="creator"
+											width={42}
+											height={42}
+										/>
+									);
+								})}
+							</div>
+							<span className="font-medium text-primary">
+								64 major creators
+							</span>
+						</div>
+						<Link
+							href={`/marketplace/${name}`}
+							className="justify-center items-center self-end text-5xl w-[70px] h-[70px] border rounded-full border-primary cursor-pointer hidden md:flex"
+						>
+							<FontAwesomeIcon icon={faArrowRight} />
+						</Link>
 					</div>
-					<span className="font-medium">64 major creators</span>
 				</div>
 			</motion.div>
 		</motion.div>
