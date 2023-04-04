@@ -10,17 +10,17 @@ interface cardI {
 
 const ProductCard = ({ name, price, url, sign }: cardI) => {
 	const card = (
-		<div>
-			<div>
+		<div className="md:bg-white md:rounded-2xl md:p-3 md:shadow-6xl">
+			<div className="w-full">
 				<Image
 					src={url}
 					alt={name}
-					width={400}
-					height={400}
-					className="h-[370px]"
+					width={800}
+					height={800}
+					className="h-[370px] md:rounded-lg aspect-[3/2] object-cover md:h-64 md:w-56"
 				/>
 			</div>
-			<div className="flex justify-between text-primary text-2xl py-3">
+			<div className="flex justify-between text-primary text-2xl py-3 md:text-lg">
 				<span className="capitalize">{name}</span>
 				<div
 					className={`flex gap-1 items-center ${
@@ -34,7 +34,17 @@ const ProductCard = ({ name, price, url, sign }: cardI) => {
 		</div>
 	);
 
-	return <>{sign ? card : <Link href={`/marketplace/${name}`}>{card}</Link>}</>;
+	return (
+		<>
+			{sign ? (
+				card
+			) : (
+				<Link href={`/marketplace/${name}`} className="">
+					{card}
+				</Link>
+			)}
+		</>
+	);
 };
 
 export default ProductCard;

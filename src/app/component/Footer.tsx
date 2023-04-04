@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Footer = () => {
 	return (
-		<footer className="mt-16 px-5 text-primary md:max-w-7x">
+		<footer className="mt-16 px-5 text-primary md:max-w-7x md:mt-24">
 			<div className="flex flex-col gap-6">
 				<div className="flex flex-col gap-6 w-full md:border md:border-primary md:flex md:flex-col md:gap-6 md:justify-center md:items-center md:mx-auto md:px-9 md:py-8">
 					<h2 className="text-2xl uppercase font-normal">newsletter</h2>

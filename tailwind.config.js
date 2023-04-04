@@ -22,6 +22,7 @@ module.exports = {
 				'3xl': '4px 4px 64px rgba(0,0,0,0.1)',
 				'4xl': '0px 0px 9px -1px rgba(0,0,0,0.25)',
 				'5xl': '4.68154px 4.68154px 7.02232px rgba(0, 0, 0, 0.15)',
+				'6xl': '0px 34px 68px rgba(217, 225, 244, 0.36);',
 			},
 		},
 		colors: {
