@@ -17,7 +17,9 @@ const ProductCard = ({ name, price, url, sign }: cardI) => {
 					alt={name}
 					width={800}
 					height={800}
-					className="h-[370px] md:rounded-lg aspect-[3/2] object-cover md:h-64 md:w-56"
+					className={`h-[370px] md:rounded-lg aspect-[3/2] object-cover ${
+						!sign ? 'md:h-64 md:w-56' : 'md:w-full'
+					}`}
 				/>
 			</div>
 			<div className="flex justify-between text-primary text-2xl py-3 md:text-lg">

@@ -29,7 +29,7 @@
 
 @layer components {
 	.section {
-		@apply px-3 mt-24;
+		@apply px-3 mt-24 md:mt-0;
 	}
 	.input-container {
 		@apply flex flex-col gap-2 text-[#888888] text-lg;
@@ -57,6 +57,23 @@
 	.navLink {
 		@apply hover:underline transition-all;
 	}
+
+	.carousel-nav {
+		@apply border border-white rounded-full w-14 h-14 flex items-center justify-center text-white cursor-pointer md:border-fadeText md:text-fadeText md:w-12 md:h-12;
+	}
+
+	.next,
+	.prev {
+		@apply top-2/4 -translate-y-2/4 absolute md:-top-[7.5rem] md:translate-y-0;
+	}
+
+	.prev {
+		@apply md:right-24;
+	}
+
+	.next {
+		@apply md:right-8 right-1;
+	}
 }
 
 .slider-control-bottomcenter ul {
@@ -67,4 +84,10 @@
 .slider-control-bottomcenter svg {
 	width: unset !important;
 	height: unset !important;
+}
+
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn {
+	width: 0;
+	height: 0;
 }

@@ -6,51 +6,56 @@ import {
 	faChevronLeft,
 	faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
-import Carousel from 'nuka-carousel/lib/carousel';
 import { productI } from '../../../../resources/interfaces';
 import ProductCard from './ProductCard';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
 
 const Collections = ({ products }: { products: productI[] }) => {
-	const defaultControlsConfig = {
-		nextButtonText: '',
-		prevButtonText: '',
-		pagingDotsStyle: {
-			display: 'none',
+	const responsive = {
+		0: {
+			items: 1,
+		},
+		768: {
+			items: 2.3,
+			itemsFit: 'contain',
+		},
+		1024: {
+			items: 2.5,
+			itemsFit: 'contain',
 		},
 	};
 
 	return (
-		<div className="border border-primary py-2 px-3">
-			<Carousel
-				wrapAround={true}
-				slidesToShow={1}
-				dragging={true}
-				dragThreshold={0}
-				swiping={true}
-				enableKeyboardControls={true}
-				defaultControlsConfig={defaultControlsConfig}
-				renderCenterLeftControls={({ previousDisabled, previousSlide }) => (
-					<button
-						onClick={previousSlide}
-						disabled={previousDisabled}
-						className="border border-white rounded-full w-14 h-14 flex items-center justify-center text-white cursor-pointer"
-					>
+		<div className="border border-primary py-2 px-3 md:px-0 md:pb-8 md:border-0 md:flex md:flex-col md:gap-16 relative">
+			<div className="bg-white shadow-3xl px-3 py-5 hidden md:block">
+				<p>Explore more from this collection</p>
+				<div></div>
+			</div>
+
+			<AliceCarousel
+				mouseTracking
+				animationType="slide"
+				disableDotsControls={true}
+				keyboardNavigation={true}
+				responsive={responsive}
+				renderPrevButton={() => (
+					<button className="prev carousel-nav">
 						<FontAwesomeIcon icon={faChevronLeft} />
 					</button>
 				)}
-				renderCenterRightControls={({ nextDisabled, nextSlide }) => (
-					<button
-						onClick={nextSlide}
-						disabled={nextDisabled}
-						className="border border-white rounded-full w-14 h-14 flex items-center justify-center text-white cursor-pointer "
-					>
+				renderNextButton={() => (
+					<button className="next carousel-nav">
 						<FontAwesomeIcon icon={faChevronRight} />
 					</button>
 				)}
 			>
 				{products.map((product: productI) => {
 					return (
-						<div key={product.id}>
+						<div
+							key={product.id}
+							className="md:border md:border-primary md:py-2 md:px-3 md:mr-5"
+						>
 							<div className="flex justify-end text-3xl my-2">
 								<FontAwesomeIcon icon={faHeart} />
 							</div>
@@ -63,7 +68,12 @@ const Collections = ({ products }: { products: productI[] }) => {
 						</div>
 					);
 				})}
-			</Carousel>
+			</AliceCarousel>
+			<div className="flex justify-center">
+				<button className="rounded-xl text-primary border border-primary px-8 py-2">
+					Explore all
+				</button>
+			</div>
 		</div>
 	);
 };
