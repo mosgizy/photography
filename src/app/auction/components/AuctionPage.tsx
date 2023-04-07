@@ -24,15 +24,15 @@ const AuctionPage = ({
 		setSelectedProduct(id);
 	};
 
-	const handleLiveStream = () => {
-		setShowLiveStream((prev) => !prev);
-	};
+	// const handleLiveStream = () => {
+	// 	setShowLiveStream((prev) => !prev);
+	// };
 
-	useEffect(() => {
-		showLiveStream
-			? (document.body.style.overflow = 'hidden')
-			: (document.body.style.overflow = 'scroll');
-	}, [showLiveStream]);
+	// useEffect(() => {
+	// 	showLiveStream
+	// 		? (document.body.style.overflow = 'hidden')
+	// 		: (document.body.style.overflow = 'scroll');
+	// }, [showLiveStream]);
 
 	return (
 		<div
@@ -47,7 +47,7 @@ const AuctionPage = ({
 						<CarouselWrapper
 							products={products}
 							setId={setProductId}
-							setShowLiveStream={handleLiveStream}
+							// setShowLiveStream={handleLiveStream}
 						/>
 					</div>
 				</div>
@@ -68,13 +68,13 @@ const AuctionPage = ({
 					</div>
 				</div>
 			</div>
-			{showLiveStream && (
+			{/* {showLiveStream && (
 				<Livestream
 					auctionId={selectedProduct}
 					products={products}
 					setShowLiveStream={handleLiveStream}
 				/>
-			)}
+			)} */}
 		</div>
 	);
 };

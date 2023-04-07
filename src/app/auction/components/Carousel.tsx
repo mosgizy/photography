@@ -6,24 +6,18 @@ import {
 	faChevronLeft,
 	faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
-import { carouselI } from '../../../../resources/interfaces';
+import { productBidI } from '../../../../resources/interfaces';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import Link from 'next/link';
 
 const CarouselWrapper = ({
 	products,
 	setId,
-	setShowLiveStream,
 }: {
-	products: carouselI[];
+	products: productBidI[];
 	setId: (id: string) => void;
-	setShowLiveStream: any;
 }) => {
-	const handleItemClick = (id: string) => {
-		setShowLiveStream();
-		setId(id);
-	};
-
 	const responsive = {
 		0: {
 			items: 1.7,
@@ -37,6 +31,8 @@ const CarouselWrapper = ({
 			itemsFit: 'contain',
 		},
 	};
+
+	// console.log(products);
 
 	return (
 		<AliceCarousel
@@ -61,20 +57,22 @@ const CarouselWrapper = ({
 					<div
 						key={product.id}
 						className="h-[186px] rounded-lg shadow-4xl overflow-hidden relative cursor-pointer mr-5"
-						onClick={() => handleItemClick(product.id)}
+						// onClick={() => handleItemClick(product.id)}
 					>
-						<Image
-							src={product.url}
-							width={500}
-							height={500}
-							alt="action"
-							className="h-full object-cover aspect-[2/3]"
-						/>
-						<div className="absolute bottom-4 w-full px-2">
-							<div className="border-[0.5px] border-white rounded-lg bg-[rgba(245,244,244,0.24)] text-white text-center text-lg py-2 backdrop-blur-[1.5px]">
-								6hr : 40mins: 15s
+						<Link href={`auction/${product.name}`}>
+							<Image
+								src={product.url}
+								width={500}
+								height={500}
+								alt="action"
+								className="h-full object-cover aspect-[2/3]"
+							/>
+							<div className="absolute bottom-4 w-full px-2">
+								<div className="border-[0.5px] border-white rounded-lg bg-[rgba(245,244,244,0.24)] text-white text-center text-lg py-2 backdrop-blur-[1.5px]">
+									6hr : 40mins: 15s
+								</div>
 							</div>
-						</div>
+						</Link>
 					</div>
 				);
 			})}

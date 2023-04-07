@@ -8,13 +8,13 @@ import Item from '../components/Item';
 const page = async ({ params }: { params: { product: string } }) => {
 	const { products }: { products: productI[] } = await getData(PRODUCT_URL);
 	const { product } = params;
-	const path = product.replace('%20', ' ');
+	const path = product.replaceAll('%20', ' ');
 
-	const currentProduct = products.filter((product: any) => {
+	const currentProduct = products.filter((product) => {
 		return product.name === path;
 	});
 
-	const moreCollections = products.filter((product: any) => {
+	const moreCollections = products.filter((product) => {
 		return product.name !== path;
 	});
 

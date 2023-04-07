@@ -35,12 +35,12 @@ export interface dropsI{
 
 export interface carouselI{
     id: string;
-    url:string;
+    url: string;
 }
 
 export interface productBidI extends carouselI { 
     name: string;
-    current:string;
+    current: string;
 }
 
 export interface bidsI{
