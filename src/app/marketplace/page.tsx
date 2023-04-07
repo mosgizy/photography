@@ -17,7 +17,7 @@ const page = async () => {
 	const slicedProducts = products.slice(0, 5);
 
 	return (
-		<section className="section md:max-w-7xl md:mx-auto lg:px-16">
+		<section className="section lg:px-16">
 			<header className="px-2 flex flex-col gap-6 md:hidden">
 				<p className="text-notActive text-lg border-primary">
 					Home/ Marketplace/ <span className="text-secondary">Editorials</span>

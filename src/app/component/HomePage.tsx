@@ -73,7 +73,7 @@ const HomePage = ({
 					})}
 				</div>
 				<div className="hidden md:block mt-6">
-					<div className="flex gap-4">
+					<div className="flex gap-4 justify-center">
 						<div className="w-[358px] h-[332px] relative translate-y-20 overflow-hidden">
 							{shuffle(carousel).map(
 								(data: { id: string; url: string }, index: number) => {

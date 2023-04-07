@@ -51,15 +51,17 @@ const AuctionPage = ({
 						/>
 					</div>
 				</div>
-				<div className="mt-12">
-					<h3 className="my-6">Top bids from popular creators </h3>
+				<div className=" md:">
+					<h3 className="my-6 md:font-bold md:text-2xl">
+						Top bids from popular creators{' '}
+					</h3>
 				</div>
-				<div className="flex flex-col gap-10">
+				<div className="flex flex-col gap-10 md:flex-row">
 					{bids.map((bid) => {
 						return <Bids key={bid.id} bid={bid} />;
 					})}
 				</div>
-				<div className="flex gap-5 justify-center items-center mt-10">
+				<div className="flex gap-5 justify-center items-center mt-10 md:hidden">
 					<span>Load more</span>
 					<div className="flex justify-center items-center self-end text-3xl w-[53px] h-[53px] border rounded-full border-fadeText cursor-pointer text-fadeText mr-6">
 						<FontAwesomeIcon icon={faArrowRight} />

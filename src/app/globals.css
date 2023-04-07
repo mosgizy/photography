@@ -29,7 +29,7 @@
 
 @layer components {
 	.section {
-		@apply px-3 mt-24 md:mt-0;
+		@apply px-3 mt-24 md:mt-12 md:max-w-7xl md:mx-auto;
 	}
 	.input-container {
 		@apply flex flex-col gap-2 text-[#888888] text-lg;
