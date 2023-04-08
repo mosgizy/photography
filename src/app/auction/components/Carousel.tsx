@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faChevronLeft,
 	faChevronRight,
+	faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { productBidI } from '../../../../resources/interfaces';
 import AliceCarousel from 'react-alice-carousel';
@@ -56,8 +57,7 @@ const CarouselWrapper = ({
 				return (
 					<div
 						key={product.id}
-						className="h-[186px] rounded-lg shadow-4xl overflow-hidden relative cursor-pointer mr-5"
-						// onClick={() => handleItemClick(product.id)}
+						className="group h-[186px] rounded-lg shadow-4xl overflow-hidden relative cursor-pointer mr-5 md:h-[276px]"
 					>
 						<Link href={`auction/${product.name}`}>
 							<Image
@@ -67,12 +67,23 @@ const CarouselWrapper = ({
 								alt="action"
 								className="h-full object-cover aspect-[2/3]"
 							/>
-							<div className="absolute bottom-4 w-full px-2">
+							<div className="absolute bottom-4 w-full px-2 z-50">
 								<div className="border-[0.5px] border-white rounded-lg bg-[rgba(245,244,244,0.24)] text-white text-center text-lg py-2 backdrop-blur-[1.5px]">
 									6hr : 40mins: 15s
 								</div>
 							</div>
 						</Link>
+						<div className="pt-8 absolute z-40 inset-0 text-white hidden md:group-hover:block bg-[rgba(0,0,0,.5)]">
+							<Link
+								href={`auction/${product.name}`}
+								className="flex justify-center items-center w-full gap-5"
+							>
+								<p className="text-2xl font-medium">Join livestream</p>
+								<span className="justify-center items-center text-5xl w-[60px] h-[60px] border rounded-full border-white cursor-pointer hidden md:flex">
+									<FontAwesomeIcon icon={faArrowRight} />
+								</span>
+							</Link>
+						</div>
 					</div>
 				);
 			})}

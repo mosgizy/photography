@@ -82,14 +82,14 @@ const Page = async ({ params }: { params: { livestream: string } }) => {
 							/>
 						</div>
 						<div className="absolute z-40 inset-0 top-0 pt-5 pb-3 px-5 text-base">
-							<div className="flex justify-between items-center">
-								<div>Tag: {name}</div>
-								<div className="flex items-center gap-3 text-xs">
+							<div className="flex justify-between items-center relative">
+								<div className="md:hidden">Tag: {name}</div>
+								<div className="flex items-center gap-3 text-xs md:flex-row-reverse md:justify-between md:w-full">
 									<div className="flex items-center gap-2">
 										<div className="bg-nameColor px-2 py-1 rounded-md cursor-pointer">
 											LIVE
 										</div>
-										<div className="flex items-center gap-2 px-2 py-1 rounded-md bg-transparentWhite cursor-pointer">
+										<div className="flex items-center gap-2 px-2 py-1 rounded-md bg-transparentWhite cursor-pointer md:hidden">
 											<FontAwesomeIcon icon={faEye} />
 											<span>295</span>
 										</div>
@@ -103,10 +103,20 @@ const Page = async ({ params }: { params: { livestream: string } }) => {
 								</div>
 							</div>
 						</div>
+						<div className="hidden md:block absolute top-2/4 text-center w-full -translate-y-2/4">
+							<h1 className="text-center hidden md:block">
+								Current bid : ${current}
+							</h1>
+						</div>
+						<div className="hidden text-2xl font-medium md:block md:absolute md:bottom-12 md:left-8 md:z-50">
+							Tag: {name}
+						</div>
 					</div>
 					<div className="absolute z-40 bottom-2 w-full h-2/4 md:relative md:bottom-8 md:h-[70vh] md:right-4 md:flex-[0_0_50%]">
 						<div className="">
-							<h1 className="text-center">Current bid : ${current}</h1>
+							<h1 className="text-center md:hidden">
+								Current bid : ${current}
+							</h1>
 							<div className="absolute z-40 bottom-0 w-full flex justify-center">
 								<div className="w-[85vw] flex justify-between items-end gap-8">
 									<div className="flex-1">
@@ -124,7 +134,7 @@ const Page = async ({ params }: { params: { livestream: string } }) => {
 											/>
 											<FontAwesomeIcon
 												icon={faPaperPlane}
-												className="absolute right-5 top-2/4 -translate-y-2/4"
+												className="absolute right-5 top-2/4 -translate-y-2/4 md:text-secondary"
 											/>
 										</div>
 									</div>
