@@ -4,7 +4,6 @@ import Bids from './../components/Bids';
 import CarouselWrapper from './../components/Carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import Livestream from './../components/Livestream';
 import { bidsI, productBidI } from '../../../../resources/interfaces';
 import { useState, useEffect } from 'react';
 
@@ -24,16 +23,6 @@ const AuctionPage = ({
 		setSelectedProduct(id);
 	};
 
-	// const handleLiveStream = () => {
-	// 	setShowLiveStream((prev) => !prev);
-	// };
-
-	// useEffect(() => {
-	// 	showLiveStream
-	// 		? (document.body.style.overflow = 'hidden')
-	// 		: (document.body.style.overflow = 'scroll');
-	// }, [showLiveStream]);
-
 	return (
 		<div
 			className={`${showLiveStream ? 'overflow-hidden' : 'overflow-scroll'}`}
@@ -44,11 +33,7 @@ const AuctionPage = ({
 						Here’s an overview of products actively on auction, explore!
 					</p>
 					<div className="mt-8">
-						<CarouselWrapper
-							products={products}
-							setId={setProductId}
-							// setShowLiveStream={handleLiveStream}
-						/>
+						<CarouselWrapper products={products} setId={setProductId} />
 					</div>
 				</div>
 				<div className=" md:">
@@ -68,13 +53,6 @@ const AuctionPage = ({
 					</div>
 				</div>
 			</div>
-			{/* {showLiveStream && (
-				<Livestream
-					auctionId={selectedProduct}
-					products={products}
-					setShowLiveStream={handleLiveStream}
-				/>
-			)} */}
 		</div>
 	);
 };
