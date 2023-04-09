@@ -9,7 +9,7 @@ export interface productI{
         eth: number;
     };
     size: {
-        ft: Number;
+        ft: number;
     }
     url: string;
 }
@@ -68,6 +68,7 @@ export interface cartItemI{
     url: string;
     cost:number;
     name: string;
+    size: number;
     creator: string;
     quantity: number;
 }

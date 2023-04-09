@@ -8,6 +8,7 @@ const initialState = {
     totalPrice:0,
     shipping:2.50,
     grandTotal: 0,
+    size:0
 } as cartI
 
 export const cartSlice = createSlice({

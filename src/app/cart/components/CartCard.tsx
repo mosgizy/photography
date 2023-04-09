@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { itemQuantityChange } from '../../../../store/slice/cart';
 
 const CartCard = ({ items }: { items: cartItemI }) => {
-	const { id, url, cost, name, creator, quantity } = items;
+	const { id, url, cost, name, creator, quantity, size } = items;
 	const [itemQuantity, setItemQuantity] = useState(quantity);
 
 	const dispatch = useAppDispatch();
@@ -36,16 +36,19 @@ const CartCard = ({ items }: { items: cartItemI }) => {
 					<Image src={url} fill alt="art" />
 				</div>
 				<div className="flex flex-col justify-between">
-					<p className="text-fadeText italic capitalize">{creator}</p>
 					<h3 className="text-xl font-bold capitalize">{name} </h3>
-					<div className="border-[0.5px] border-black rounded-xl overflow-hidden flex justify-between text-xl">
+					<p className="text-fadeText italic capitalize">{creator}</p>
+					<p>Size: {size}</p>
+					<div className="border-[0.5px] border-black md:border-none rounded-xl overflow-hidden flex justify-between text-xl">
 						<button
 							onClick={handleDecreement}
-							className="border-r-[0.5px] px-3"
+							className="border-r-[0.5px] px-3 md:border-none"
 						>
 							-
 						</button>
-						<p className="border-r-[0.5px] px-3">{itemQuantity}</p>
+						<p className="border-r-[0.5px] px-3 md:border-none">
+							{itemQuantity}
+						</p>
 						<button onClick={handleIncreement} className="px-3">
 							+
 						</button>

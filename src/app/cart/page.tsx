@@ -4,6 +4,7 @@ import CartCard from './components/CartCard';
 import NavBtn from './components/NavBtn';
 import Link from 'next/link';
 import { useAppSelector } from '../../../store/hooks';
+import useLocal from '../../../hooks/localStorage';
 
 const Page = () => {
 	const { items } = useAppSelector((store) => store.cart);
@@ -12,6 +13,8 @@ const Page = () => {
 		(total, cost) => total + cost.cost * cost.quantity,
 		0
 	);
+
+	useLocal(items);
 
 	return (
 		<section className="section">
@@ -37,11 +40,11 @@ const Page = () => {
 				</p>
 				<p className="flex justify-between border-b border-dashed pb-3">
 					<span className="text-[#888888]">Total : </span>
-					<span>${totalCost}</span>
+					<span>${totalCost.toFixed(2)}</span>
 				</p>
 				<p className="flex justify-between">
 					<span className="text-[#888888]">Grand total : </span>
-					<span>${totalCost + 2.5}</span>
+					<span>${(totalCost + 2.5).toFixed(2)}</span>
 				</p>
 			</div>
 			<div className="btn-container">

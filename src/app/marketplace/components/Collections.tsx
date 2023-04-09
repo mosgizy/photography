@@ -69,7 +69,7 @@ const Collections = ({ products }: { products: productI[] }) => {
 					);
 				})}
 			</AliceCarousel>
-			<div className="flex justify-center">
+			<div className="justify-center hidden md:flex">
 				<button className="rounded-xl text-primary border border-primary px-8 py-2">
 					Explore all
 				</button>

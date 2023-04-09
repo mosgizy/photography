@@ -132,7 +132,7 @@ const page = async () => {
 								<span>Filters</span>
 								<FontAwesomeIcon icon={faChevronDown} />
 							</div>
-							<div className="">See 1-6 of 15 results</div>
+							<div className="hidden md:block">See 1-6 of 15 results</div>
 							<div className="flex gap-3 items-center md:border md:rounded-lg md:px-6 md:py-1 md:justify-center cursor-pointer">
 								<span>Sort by</span>
 								<FontAwesomeIcon icon={faChevronDown} />

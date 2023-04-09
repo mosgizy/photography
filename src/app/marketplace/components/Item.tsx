@@ -4,24 +4,30 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { productI } from '../../../../resources/interfaces';
+import { cartItemI, productI } from '../../../../resources/interfaces';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { addToCart, itemQuantityChange } from '../../../../store/slice/cart';
 import { useEffect, useState } from 'react';
 import Info from './Info';
+import useLocal from '../../../../hooks/localStorage';
+
+declare let window: { localStorage: any };
 
 const Item = ({ product }: { product: productI }) => {
-	const { id, name, creator, origin, views, price, url } = product;
+	const { id, name, creator, origin, views, price, url, size } = product;
 	const dispatch = useAppDispatch();
 	const { items } = useAppSelector((store) => store.cart);
 	const [quantity, setQuantity] = useState(1);
 
 	const [tempItem] = items.filter((item) => item.id === id);
+	const sizeFt = size.ft;
 
 	const handleAddToCart = () => {
 		const cost: number = price.usd;
-		if (!tempItem)
-			dispatch(addToCart({ id, name, creator, url, cost, quantity }));
+		const size: number = sizeFt;
+		if (!tempItem) {
+			dispatch(addToCart({ id, name, creator, url, cost, quantity, size }));
+		}
 	};
 
 	const handleIncreement = () => {
@@ -35,6 +41,16 @@ const Item = ({ product }: { product: productI }) => {
 		tempItem &&
 			dispatch(itemQuantityChange({ id: id, quantity: quantity - 1 }));
 	};
+
+	useLocal(items);
+
+	// useEffect(() => {
+	// 	const datas = JSON.parse(window.localStorage.getItem('cart'));
+	// 	console.log(datas);
+	// 	datas && datas.map((data: cartItemI) => dispatch(addToCart({ ...data })));
+	// }, []);
+
+	// useEffect(() => {}, [items]);
 
 	return (
 		<div className="md:flex">
