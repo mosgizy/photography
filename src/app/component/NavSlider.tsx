@@ -10,7 +10,6 @@ const NavSlider = ({
 	toggle: boolean;
 	handleToggle: () => void;
 }) => {
-	// console.log(toggle);
 	return (
 		<div
 			className={`py-7 px-4 bg-white transition-all absolute top-0 z-50 min-h-screen w-full ${

@@ -12,13 +12,7 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import Link from 'next/link';
 
-const CarouselWrapper = ({
-	products,
-	setId,
-}: {
-	products: productBidI[];
-	setId: (id: string) => void;
-}) => {
+const CarouselWrapper = ({ products }: { products: productBidI[] }) => {
 	const responsive = {
 		0: {
 			items: 1.7,

@@ -19,7 +19,6 @@ const Page = async ({ params }: { params: { livestream: string } }) => {
 	const path = livestream.replaceAll('%20', ' ');
 	const [liveBid] = products.filter((product) => product.name === path);
 	const { name, url, current } = liveBid;
-	console.log(path);
 
 	const bidder = (
 		<div className="flex gap-1 text-xs mb-4">

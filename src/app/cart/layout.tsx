@@ -1,4 +1,4 @@
-import NavBar from '../component/NavBar';
+import LayoutNav from './components/LayoutNav';
 
 export default function RootLayout({
 	children,
@@ -7,7 +7,7 @@ export default function RootLayout({
 }) {
 	return (
 		<main className="mb-10 overflow-x-hidden">
-			<div>hello world</div>
+			<LayoutNav />
 			{children}
 		</main>
 	);

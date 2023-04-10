@@ -10,7 +10,7 @@ const NavBtn = () => {
 	};
 
 	return (
-		<div className="flex justify-center mt-12">
+		<div className="flex justify-center mt-12 md:hidden">
 			<div className="w-[85vw] bg-[#3a3a3a] rounded-[40px] px-7 py-1 text-white text-lg flex justify-between">
 				<button
 					onClick={handleBtn}

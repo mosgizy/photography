@@ -14,26 +14,15 @@ const AuctionPage = ({
 	products: productBidI[];
 	bids: bidsI[];
 }) => {
-	const [selectedProduct, setSelectedProduct] = useState<string>(
-		products[0].id
-	);
-	const [showLiveStream, setShowLiveStream] = useState<boolean>(false);
-
-	const setProductId = (id: string) => {
-		setSelectedProduct(id);
-	};
-
 	return (
-		<div
-			className={`${showLiveStream ? 'overflow-hidden' : 'overflow-scroll'}`}
-		>
+		<div>
 			<div>
 				<div>
 					<p className="text-primary text-lg">
 						Here’s an overview of products actively on auction, explore!
 					</p>
 					<div className="mt-8">
-						<CarouselWrapper products={products} setId={setProductId} />
+						<CarouselWrapper products={products} />
 					</div>
 				</div>
 				<div className=" md:">

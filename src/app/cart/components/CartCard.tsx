@@ -30,7 +30,7 @@ const CartCard = ({ items }: { items: cartItemI }) => {
 	};
 
 	return (
-		<div className="flex justify-between">
+		<div className="flex justify-between md:border-b md:border-[#747474] md:pb-10">
 			<div className="flex gap-3">
 				<div className="relative w-[125px] h-[126px]">
 					<Image src={url} fill alt="art" />

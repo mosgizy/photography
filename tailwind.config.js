@@ -17,6 +17,7 @@ module.exports = {
 					'linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), linear-gradient(104.57deg, rgba(0, 0, 0, 0) 21.03%, rgba(0, 0, 0, 0.2) 56.5%, rgba(0, 0, 0, 0.2) 93.84%), url(https://images.unsplash.com/photo-1667521452940-0a127d88e345?crop=entropy&cs=tinysrgb&fm=jpg&ixid=Mnw3MjAxN3wwfDF8YWxsfDEyN3x8fHx8fDJ8fDE2Njc2NzE3MzU&ixlib=rb-4.0.3&q=80&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450)',
 				'drops-linear':
 					'linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(245, 244, 244, 0.24)',
+				thank: 'linear-gradient(to right, #006CA2 80%, white 20%)',
 			},
 			boxShadow: {
 				'3xl': '4px 4px 64px rgba(0,0,0,0.1)',
