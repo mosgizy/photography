@@ -7,14 +7,12 @@ import {
 import getData from '../../../utils/api';
 import { productI } from '../../../resources/interfaces';
 import { PRODUCT_URL } from '../../../resources/constant';
-import ProductCard from './components/ProductCard';
 import Footer from '../component/Footer';
 import Header from './components/Header';
+import ProductsComponent from './components/ProductsComponent';
 
 const page = async () => {
 	const { products }: { products: productI[] } = await getData(PRODUCT_URL);
-
-	const slicedProducts = products.slice(0, 5);
 
 	return (
 		<section className="section lg:px-16">
@@ -125,47 +123,10 @@ const page = async () => {
 						</div>
 					</div>
 				</div>
-				<div className="w-full flex-[1_1_80%]">
-					<div className="px-2">
-						<div className="flex justify-between items-center py-3 px-3 text-lg bg-white shadow-3xl mt-4 mb-5 md:mt-0 md:mb-20 rounded">
-							<div className="flex gap-3 items-center md:hidden">
-								<span>Filters</span>
-								<FontAwesomeIcon icon={faChevronDown} />
-							</div>
-							<div className="hidden md:block">See 1-6 of 15 results</div>
-							<div className="flex gap-3 items-center md:border md:rounded-lg md:px-6 md:py-1 md:justify-center cursor-pointer">
-								<span>Sort by</span>
-								<FontAwesomeIcon icon={faChevronDown} />
-							</div>
-						</div>
-					</div>
-					<div className="px-6 flex flex-col gap-5 md:grid md:grid-cols-2 grid-flow-row lg:grid-cols-3 md:gap-8">
-						{slicedProducts.map((product) => {
-							return (
-								<ProductCard
-									key={product.id}
-									name={product.name}
-									url={product.url}
-									price={product.price.usd}
-								/>
-							);
-						})}
-					</div>
-				</div>
+
+				<ProductsComponent products={products} />
 			</div>
-			<div className="flex gap-5 justify-end items-center mt-10 md:justify-center md:mt-20">
-				<div className="flex gap-5 items-center md:hidden">
-					<span>Load more</span>
-					<div className="flex justify-center items-center self-end text-3xl w-[53px] h-[53px] border rounded-full border-fadeText cursor-pointer text-fadeText mr-6">
-						<FontAwesomeIcon icon={faArrowRight} />
-					</div>
-				</div>
-				<div className="hidden md:block">
-					<button className="text-xl px-10 text-center py-2 rounded-lg border border-primary text-primary">
-						See more
-					</button>
-				</div>
-			</div>
+
 			<div className="md:hidden">
 				<Footer />
 			</div>
