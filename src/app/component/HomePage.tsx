@@ -38,7 +38,6 @@ const HomePage = ({
 
 	const { scrollYProgress } = useScroll();
 	const yPos = useTransform(scrollYProgress, [0, 1000], [0, -700]);
-	// console.log(yPos);
 
 	return (
 		<>
@@ -191,8 +190,8 @@ const HomePage = ({
 				<Auction />
 			</motion.div>
 			<div>
-				<Linking link={'Explore marketplace'} />
-				<Linking link={'See auction'} />
+				<Linking title={'Explore marketplace'} link="marketplace" />
+				<Linking title={'See auction'} link="auction" />
 			</div>
 			<div>
 				<Creators />

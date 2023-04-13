@@ -17,9 +17,7 @@ const ProductCard = ({ name, price, url, sign }: cardI) => {
 					alt={name}
 					width={800}
 					height={800}
-					className={`h-[370px] md:rounded-lg aspect-[3/2] object-cover ${
-						!sign ? 'md:h-64 md:w-56' : 'md:w-full'
-					}`}
+					className={`h-[370px] md:rounded-lg aspect-[3/2] object-cover md:w-full`}
 				/>
 			</div>
 			<div className="flex justify-between text-primary text-2xl py-3 md:text-lg">
@@ -36,17 +34,7 @@ const ProductCard = ({ name, price, url, sign }: cardI) => {
 		</div>
 	);
 
-	return (
-		<>
-			{sign ? (
-				card
-			) : (
-				<Link href={`/marketplace/${name}`} className="">
-					{card}
-				</Link>
-			)}
-		</>
-	);
+	return <>{sign ? card : <Link href={`/marketplace/${name}`}>{card}</Link>}</>;
 };
 
 export default ProductCard;

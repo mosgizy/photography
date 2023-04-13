@@ -12,7 +12,7 @@ const NavSlider = ({
 }) => {
 	return (
 		<div
-			className={`py-7 px-4 bg-white transition-all absolute top-0 z-50 min-h-screen w-full ${
+			className={`py-7 px-4 bg-white transition-all absolute top-0 z-50 min-h-screen w-full md:hidden ${
 				toggle ? 'translate-x-0' : '-translate-x-full'
 			}`}
 		>

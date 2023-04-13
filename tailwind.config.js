@@ -41,6 +41,7 @@ module.exports = {
 			black: '#000000',
 			transparentWhite: 'rgba(255,255,255,0.4)',
 			checkedHeart: '#E31616',
+			hover: '#3341C1',
 		},
 	},
 	plugins: [],

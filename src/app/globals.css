@@ -47,7 +47,7 @@
 	}
 
 	.btn {
-		@apply rounded-md bg-buttonColor text-white py-3 px-10 text-center;
+		@apply rounded-md bg-buttonColor text-white py-3 px-10 text-center hover:bg-hover;
 	}
 
 	.link {
@@ -55,7 +55,7 @@
 	}
 
 	.navLink {
-		@apply hover:underline transition-all underline-offset-4;
+		@apply hover:underline transition-all underline-offset-4 capitalize;
 	}
 
 	.carousel-nav {
