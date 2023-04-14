@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Cart from '../components/Cart';
-import { useReducer } from 'react';
+import { MouseEventHandler, useReducer } from 'react';
 import { shoppingFormI } from '../../../../resources/interfaces';
 import { useRouter } from 'next/navigation';
 
@@ -25,7 +25,7 @@ const Page = () => {
 
 	const { push } = useRouter();
 
-	const handleUpadateFormdata = (e) => {
+	const handleUpadateFormdata = (e: any) => {
 		e.preventDefault();
 
 		if (
