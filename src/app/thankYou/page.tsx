@@ -1,9 +1,14 @@
+'use client';
+
 import Image from 'next/image';
 import thankYou from '../../../resources/images/Woman get online delivery.png';
 import ellipse from '../../../resources/images/Ellipse 7.png';
 import ellipse1 from '../../../resources/images/Ellipse 8.png';
+import { useAppSelector } from '../../../store/hooks';
 
 const Page = () => {
+	const { name } = useAppSelector((state) => state.form.details);
+
 	return (
 		<section className="section">
 			<div className="flex justify-center items-center backdrop-blur-2xl relative">
@@ -20,7 +25,10 @@ const Page = () => {
 				<span className="w-[129px] h-[112px] bg-[#E27625] absolute bottom-6 right-0 rounded-full backdrop-blur-2xl  opacity-10 md:hidden"></span>
 			</div>
 			<div className="flex flex-col gap-6 items-center text-center mt-6">
-				<p className="text-lg">Hey Celestina, thank you for your purchase. </p>
+				<p className="text-lg">
+					Hey <span className="capitalize">{name}</span>, thank you for your
+					purchase.{' '}
+				</p>
 				<p className="text-fadeText text-base">
 					You are amazing. Cheers to being{' '}
 					<span className="text-nameColor">ARTSY!</span>

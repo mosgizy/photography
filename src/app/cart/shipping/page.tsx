@@ -2,9 +2,11 @@
 
 import Link from 'next/link';
 import Cart from '../components/Cart';
-import { MouseEventHandler, useReducer } from 'react';
+import { useReducer } from 'react';
 import { shoppingFormI } from '../../../../resources/interfaces';
 import { useRouter } from 'next/navigation';
+import { useAppDispatch } from '../../../../store/hooks';
+import { getFormData } from '../../../../store/slice/formSlice';
 
 const Page = () => {
 	const [formData, updateFormData] = useReducer(
@@ -24,9 +26,12 @@ const Page = () => {
 	);
 
 	const { push } = useRouter();
+	const dispatch = useAppDispatch();
 
 	const handleUpadateFormdata = (e: any) => {
 		e.preventDefault();
+
+		dispatch(getFormData(formData));
 
 		if (
 			formData.email &&

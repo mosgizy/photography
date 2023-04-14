@@ -4,6 +4,7 @@ import { useAppSelector } from '../../../../store/hooks';
 import CartCard from './CartCard';
 import useLocal from '../../../../hooks/localStorage';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Cart = ({ btn }: { btn: boolean }) => {
 	const { items } = useAppSelector((store) => store.cart);
@@ -11,6 +12,12 @@ const Cart = ({ btn }: { btn: boolean }) => {
 		(total, cost) => total + cost.cost * cost.quantity,
 		0
 	);
+
+	const { push } = useRouter();
+
+	const handleSubmit = () => {
+		items.length > 0 && push('cart/shipping');
+	};
 
 	useLocal(items);
 
@@ -44,9 +51,9 @@ const Cart = ({ btn }: { btn: boolean }) => {
 				</div>
 				{btn && (
 					<div className="btn-container md:mt-0 md:justify-start">
-						<Link href="cart/shipping" className="btn">
+						<button type="button" onClick={handleSubmit} className="btn">
 							Proceed to checkout
-						</Link>
+						</button>
 						<Link href="marketplace" className="link">
 							Continue shopping
 						</Link>

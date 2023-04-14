@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import cartSlice from './slice/cart'
+import formSlice from './slice/formSlice'
 
 export const store = configureStore({
     reducer: {
-      cart: cartSlice
+        cart: cartSlice,
+        form: formSlice,  
     },
     devTools:true
 })
