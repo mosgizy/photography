@@ -13,7 +13,10 @@ const Home = async () => {
 		await getData(PRODUCT_URL);
 
 	return (
-		<section className={`${poppins.className}`}>
+		<section
+			className={`${poppins.className} section
+		`}
+		>
 			<HomePage featuredProducts={featured_products} carousel={carousel} />
 			<Footer />
 		</section>
