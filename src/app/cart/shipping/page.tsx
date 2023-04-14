@@ -186,9 +186,11 @@ const Page = () => {
 							</Link>
 						</div>
 					</form>
-					<button onClick={handleAutoFill} className="btn md:w-full mt-6">
-						Auto fill
-					</button>
+					<div className="btn-container">
+						<button onClick={handleAutoFill} className="btn md:w-full md:mt-6">
+							Auto fill
+						</button>
+					</div>
 				</div>
 				<div className="hidden md:block md:flex-1">
 					<Cart btn={false} />
