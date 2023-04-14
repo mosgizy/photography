@@ -84,7 +84,7 @@ const Page = () => {
 									connect a new wallet.{' '}
 								</p>
 							</div>
-							<div className="mt-6 flex flex-col gap-6">
+							<form className="mt-6 flex flex-col gap-6">
 								<div className="input-container">
 									<label htmlFor="wallet type">Wallet type</label>
 									<input type="text" name="wallet type" className="input" />
@@ -111,11 +111,21 @@ const Page = () => {
 								<div className="flex flex-col gap-6 md:flex-row md:gap-3">
 									<div className="input-container md:flex-1">
 										<label htmlFor="expiry date">Expirey date</label>
-										<input type="text" name="expiry date" className="input" />
+										<input
+											type="text"
+											name="expiry date"
+											className="input"
+											placeholder="MM/YY"
+										/>
 									</div>
 									<div className="input-container md:flex-1">
 										<label htmlFor="safe code">CVV</label>
-										<input type="text" name="safe code" className="input" />
+										<input
+											type="text"
+											name="safe code"
+											className="input"
+											placeholder="***"
+										/>
 									</div>
 								</div>
 								<div className="flex items-center gap-2 text-base text-[#747474]">
@@ -124,7 +134,7 @@ const Page = () => {
 										Save my wallet details & information for future transactions
 									</span>
 								</div>
-							</div>
+							</form>
 						</div>
 						<div className="btn-container">
 							<Link className="btn w-9/12  md:w-full" href="/thankYou">

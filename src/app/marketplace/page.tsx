@@ -20,7 +20,9 @@ const page = async () => {
 				<p className="text-notActive text-lg border-primary">
 					Home/ Marketplace/ <span className="text-secondary">Editorials</span>
 				</p>
-				<p className="text-notActive text-base">Showing 1-5 of 18 results</p>
+				<p className="text-notActive text-base">
+					Showing 1-5 of {products.length} results
+				</p>
 			</header>
 			<div className="md:flex gap-9 items-start">
 				<div className="hidden md:block w-[18rem] pt-4">

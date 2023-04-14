@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 const LayoutNav = () => {
 	const path = usePathname().slice(1);
 
-	console.log(path);
 	return (
 		<div className="hidden md:block mt-9 w-max mx-auto">
 			<ul className="flex items-center justify-center gap-10 text-[#888888]">

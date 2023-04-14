@@ -80,3 +80,14 @@ export interface cartI{
     shipping: number;
     grandTotal: number;
 }
+
+export interface shoppingFormI{
+    email: string;
+    name: string;
+    walletType: string;
+    city: string;
+    country: string;
+    postalCode: number;
+    phoneNumber: number;
+    getUpdate: boolean;
+}

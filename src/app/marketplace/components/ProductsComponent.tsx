@@ -16,8 +16,6 @@ const ProductsComponent = ({ products }: { products: productI[] }) => {
 		slicedProducts.length === products.length
 			? setSlicedProducts(products.slice(0, 5))
 			: setSlicedProducts(products);
-
-		console.log(slicedProducts.length, products.length);
 	};
 
 	const handleSortProducts = (sortFormat: string) => {
@@ -51,7 +49,9 @@ const ProductsComponent = ({ products }: { products: productI[] }) => {
 							<span>Filters</span>
 							<FontAwesomeIcon icon={faChevronDown} />
 						</div>
-						<div className="hidden md:block">See 1-6 of 15 results</div>
+						<div className="hidden md:block">
+							See 1-5 of {products.length} results
+						</div>
 						<div
 							onClick={() => setShowModal((prev) => !prev)}
 							className="flex gap-3 items-center md:border md:rounded-lg md:px-6 md:py-1 md:justify-center cursor-pointer"
@@ -62,13 +62,19 @@ const ProductsComponent = ({ products }: { products: productI[] }) => {
 						{showModal && (
 							<div className="absolute right-0 top-16 z-40 rounded-lg w-32 capitalize bg-white shadow-3xl px-4 py-2 flex flex-col gap-2">
 								<p
-									onClick={() => handleSortProducts('name')}
+									onClick={() => {
+										handleSortProducts('name');
+										setShowModal((prev) => !prev);
+									}}
 									className="cursor-pointer"
 								>
 									name
 								</p>
 								<p
-									onClick={() => handleSortProducts('price')}
+									onClick={() => {
+										handleSortProducts('price');
+										setShowModal((prev) => !prev);
+									}}
 									className="cursor-pointer"
 								>
 									price
