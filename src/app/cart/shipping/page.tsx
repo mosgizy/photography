@@ -41,6 +41,19 @@ const Page = () => {
 		}
 	};
 
+	const handleAutoFill = () => {
+		updateFormData({
+			email: 'johndoes@gmail.com',
+			name: 'john doe',
+			walletType: 'MetaMask',
+			city: 'Lagos',
+			country: 'Nigeria',
+			postalCode: 116600,
+			phoneNumber: 123456789,
+			getUpdate: false,
+		});
+	};
+
 	return (
 		<section className="section">
 			<header className="md:hidden">
@@ -168,6 +181,9 @@ const Page = () => {
 							</Link>
 						</div>
 					</form>
+					<button onClick={handleAutoFill} className="btn md:w-full mt-6">
+						Auto fill
+					</button>
 				</div>
 				<div className="hidden md:block md:flex-1">
 					<Cart btn={false} />
