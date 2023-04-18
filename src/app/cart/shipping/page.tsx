@@ -7,6 +7,7 @@ import { shoppingFormI } from '../../../../resources/interfaces';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch } from '../../../../store/hooks';
 import { getFormData } from '../../../../store/slice/formSlice';
+// import sendEmail from 'sendEmail';
 
 const Page = () => {
 	const [formData, updateFormData] = useReducer(
