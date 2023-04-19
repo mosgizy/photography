@@ -20,7 +20,7 @@ const Bids = ({ bid }: { bid: bidsI }) => {
 						width={500}
 						height={500}
 						alt="bids"
-						className="w-[359px] h-[184px]"
+						className="md:w-[359px] h-[184px] w-full object-cover"
 					/>
 				</div>
 				<div className="flex justify-between items-center pt-2">

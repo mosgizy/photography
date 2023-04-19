@@ -11,8 +11,6 @@ const useLocal = (items: cartItemI[]) => {
 		const localData = reactLocalStorage.get('cart');
 		const datas: cartItemI[] = JSON.parse(`${localData}`);
 
-		// console.log(JSON.parse(localData));
-
 		items.length === 0 &&
 			datas &&
 			datas.map((data: cartItemI) => dispatch(addToCart({ ...data })));
