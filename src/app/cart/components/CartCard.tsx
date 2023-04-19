@@ -27,6 +27,7 @@ const CartCard = ({ items }: { items: cartItemI }) => {
 	const handleDecreement = () => {
 		setItemQuantity((prev) => (prev === 0 ? 0 : prev - 1));
 		dispatch(itemQuantityChange({ id: id, quantity: itemQuantity - 1 }));
+		itemQuantity - 1 === 0 && handleremoveItem();
 	};
 
 	return (
