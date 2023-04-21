@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Cart from '../components/Cart';
-import { useReducer } from 'react';
+import { useReducer, FormEvent } from 'react';
 import { shoppingFormI } from '../../../../resources/interfaces';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch } from '../../../../store/hooks';
@@ -29,10 +29,21 @@ const Page = () => {
 	const { push } = useRouter();
 	const dispatch = useAppDispatch();
 
-	const handleUpadateFormdata = (e: any) => {
+	const handleUpadateFormdata = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		dispatch(getFormData(formData));
+
+		const res = await fetch('http://localhost:3000/api/shipping', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(formData),
+		});
+
+		const result = await res.json();
+		console.log(result);
 
 		if (
 			formData.email &&
@@ -69,7 +80,7 @@ const Page = () => {
 			</header>
 			<div className="md:flex md:gap-16">
 				<div className="md:flex-1">
-					<form className="mt-6">
+					<form onSubmit={handleUpadateFormdata} className="mt-6">
 						<div className="input-container">
 							<label htmlFor="email">Your Email</label>
 							<div className="w-full">
@@ -175,11 +186,7 @@ const Page = () => {
 							/>
 						</div>
 						<div className="btn-container">
-							<button
-								type="submit"
-								onClick={handleUpadateFormdata}
-								className="btn md:w-full"
-							>
+							<button type="submit" className="btn md:w-full">
 								Proceed to payment
 							</button>
 							<Link href="cart" className="link md:hidden">

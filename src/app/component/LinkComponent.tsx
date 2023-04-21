@@ -2,8 +2,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const LinkComponent = () => {
-	const path = usePathname().slice(1);
+	const path = usePathname().slice(1).split('/')[0];
 	const linkText = ['home', 'marketplace', 'auction', 'drops'];
+
 	return (
 		<ul className="gap-6 items-center hidden md:flex text-secondary">
 			{linkText.map((link, index) => {
