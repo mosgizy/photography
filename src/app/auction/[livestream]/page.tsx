@@ -163,3 +163,9 @@ const Page = async ({ params }: { params: { livestream: string } }) => {
 };
 
 export default Page;
+
+export async function generateStaticParams() {
+	const { products }: { products: productBidI[] } = await getData(AUCTION_URL);
+
+	return products.map((product) => ({ livestream: product.name }));
+}

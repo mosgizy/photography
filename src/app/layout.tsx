@@ -4,8 +4,9 @@ import './globals.css';
 import { productI } from '../../resources/interfaces';
 import { PRODUCT_URL } from '../../resources/constant';
 import getData from '../../utils/api';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: 'The Hills',
 	description: 'Welcome to The Hills',
 };
