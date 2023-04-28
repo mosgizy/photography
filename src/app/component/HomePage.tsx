@@ -40,7 +40,7 @@ const HomePage = ({
 	const yPos = useTransform(scrollYProgress, [0, 1000], [0, -700]);
 
 	return (
-		<>
+		<section className="overflow overflow-hidden">
 			<header className="flex flex-col gap-5 text-center px-5">
 				<h1 className="text-3xl md:text-[80px] md:max-w-5xl text-center md:leading-[100px] md:px-12 md:mx-auto">
 					Photography is poetry & beautiful untold stories
@@ -196,7 +196,7 @@ const HomePage = ({
 			<div>
 				<Creators />
 			</div>
-		</>
+		</section>
 	);
 };
 
