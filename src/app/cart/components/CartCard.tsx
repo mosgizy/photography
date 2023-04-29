@@ -3,11 +3,12 @@
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { cartItemI } from '../../../../resources/interfaces';
+import { cartItemI, toastI } from '../../../../resources/interfaces';
 import { useAppDispatch } from '../../../../store/hooks';
 import { removeItemFromCart } from '../../../../store/slice/cart';
 import { useState } from 'react';
 import { itemQuantityChange } from '../../../../store/slice/cart';
+import useToast from '../../../../hooks/toast';
 
 const CartCard = ({ items }: { items: cartItemI }) => {
 	const { id, url, cost, name, creator, quantity, size } = items;
@@ -15,8 +16,13 @@ const CartCard = ({ items }: { items: cartItemI }) => {
 
 	const dispatch = useAppDispatch();
 
+	const { notify, toastContainer }: toastI = useToast(
+		`${name} removed from cart`
+	);
+
 	const handleremoveItem = () => {
 		dispatch(removeItemFromCart(id));
+		notify();
 	};
 
 	const handleIncreement = () => {
@@ -35,6 +41,7 @@ const CartCard = ({ items }: { items: cartItemI }) => {
 			<div className="flex gap-3">
 				<div className="relative w-[125px] h-[126px]">
 					<Image src={url} fill alt="art" />
+					{toastContainer}
 				</div>
 				<div className="flex flex-col justify-between">
 					<h3 className="text-xl font-bold capitalize">{name} </h3>

@@ -91,3 +91,8 @@ export interface shoppingFormI{
     phoneNumber: number;
     getUpdate: boolean;
 }
+
+export interface toastI{
+    notify: () => void;
+    toastContainer: JSX.Element;
+}
