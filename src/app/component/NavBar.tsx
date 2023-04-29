@@ -11,8 +11,9 @@ import NavSlider from './NavSlider';
 import { useState } from 'react';
 import Link from 'next/link';
 import LinkComponent from './LinkComponent';
-import { productI } from '../../../resources/interfaces';
+import { productI, toastI } from '../../../resources/interfaces';
 import ProductSearch from './ProductSearch';
+import useToast from '../../../hooks/toast';
 
 const NavBar = ({ products }: { products: productI[] }) => {
 	const [toggle, setToggle] = useState<boolean>(false);
@@ -21,6 +22,8 @@ const NavBar = ({ products }: { products: productI[] }) => {
 	const handleToggle = () => {
 		setToggle((prev) => !prev);
 	};
+
+	const { toastContainer }: toastI = useToast('');
 
 	return (
 		<div className="md:flex md:justify-center">
@@ -60,6 +63,7 @@ const NavBar = ({ products }: { products: productI[] }) => {
 				</div>
 			</div>
 			<NavSlider toggle={toggle} handleToggle={handleToggle} />
+			{toastContainer}
 		</div>
 	);
 };

@@ -16,9 +16,7 @@ const CartCard = ({ items }: { items: cartItemI }) => {
 
 	const dispatch = useAppDispatch();
 
-	const { notify, toastContainer }: toastI = useToast(
-		`${name} removed from cart`
-	);
+	const { notify }: toastI = useToast(`${name} removed from cart`);
 
 	const handleremoveItem = () => {
 		dispatch(removeItemFromCart(id));
@@ -41,7 +39,6 @@ const CartCard = ({ items }: { items: cartItemI }) => {
 			<div className="flex gap-3">
 				<div className="relative w-[125px] h-[126px]">
 					<Image src={url} fill alt="art" />
-					{toastContainer}
 				</div>
 				<div className="flex flex-col justify-between">
 					<h3 className="text-xl font-bold capitalize">{name} </h3>

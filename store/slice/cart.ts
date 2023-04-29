@@ -8,7 +8,7 @@ const initialState = {
     totalPrice:0,
     shipping:2.50,
     grandTotal: 0,
-    size:0
+    size: 0
 } as cartI
 
 export const cartSlice = createSlice({
@@ -26,10 +26,10 @@ export const cartSlice = createSlice({
             let [tempItems] = state.items.filter(item => item.id === action.payload.id)
             let replacement = { ...tempItems, quantity: action.payload.quantity }
             state.items.splice(state.items.indexOf(tempItems),1,replacement)
-        }
+        },
     }
 })
 
-export const { addToCart,removeItemFromCart,itemQuantityChange } = cartSlice.actions
+export const { addToCart,removeItemFromCart,itemQuantityChange} = cartSlice.actions
 
 export default cartSlice.reducer

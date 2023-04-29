@@ -1,5 +1,6 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 const useToast = (text: string) => {
 	const notify = () =>
 		toast(text, {

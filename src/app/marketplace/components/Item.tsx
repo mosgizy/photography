@@ -4,15 +4,15 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { productI, toastI } from '../../../../resources/interfaces';
+import { productI } from '../../../../resources/interfaces';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { addToCart, itemQuantityChange } from '../../../../store/slice/cart';
 import { useState } from 'react';
 import Info from './Info';
 import useLocal from '../../../../hooks/localStorage';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useToast from '../../../../hooks/toast';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Item = ({ product }: { product: productI }) => {
 	const { id, name, creator, origin, views, price, url, size } = product;
@@ -20,7 +20,7 @@ const Item = ({ product }: { product: productI }) => {
 	const { items } = useAppSelector((store) => store.cart);
 	const [quantity, setQuantity] = useState(1);
 
-	const { notify, toastContainer }: toastI = useToast(`${name} added to cart`);
+	const { notify } = useToast(`${name} added to cart`);
 
 	const [tempItem] = items.filter((item) => item.id === id);
 	const sizeFt = size.ft;
@@ -104,7 +104,7 @@ const Item = ({ product }: { product: productI }) => {
 					</div>
 				</div>
 			</div>
-			{toastContainer}
+			{/* {toastContainer} */}
 		</>
 	);
 };
