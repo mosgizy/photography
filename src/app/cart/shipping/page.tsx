@@ -26,7 +26,6 @@ const Page = () => {
 		} as shoppingFormI
 	);
 
-	// const { push } = useRouter();
 	const dispatch = useAppDispatch();
 
 	const { items } = useAppSelector((store) => store.cart);
