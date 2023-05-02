@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = 'https://gist.githubusercontent.com/mosgizy/fecbe2da3715d3f85becbed4e0676999/raw/3946112cac03441dc72e4ddb45c485d59ad7d125/';
+const baseUrl = 'https://gist.githubusercontent.com/mosgizy/fecbe2da3715d3f85becbed4e0676999/raw/7e911437be3be24574b05b37033b9dbe430c1888/';
 
 const getData = async (url: string) => {
     try {

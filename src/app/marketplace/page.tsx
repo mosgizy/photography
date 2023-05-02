@@ -1,9 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-	faArrowRight,
-	faChevronDown,
-	faSearch,
-} from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import getData from '../../../utils/api';
 import { productI } from '../../../resources/interfaces';
 import { PRODUCT_URL } from '../../../resources/constant';

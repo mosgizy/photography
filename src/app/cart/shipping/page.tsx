@@ -5,9 +5,9 @@ import Cart from '../components/Cart';
 import { useReducer, FormEvent } from 'react';
 import { shoppingFormI } from '../../../../resources/interfaces';
 import { useRouter } from 'next/navigation';
-import { useAppDispatch } from '../../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { getFormData } from '../../../../store/slice/formSlice';
-// import sendEmail from 'sendEmail';
+import axios from 'axios';
 
 const Page = () => {
 	const [formData, updateFormData] = useReducer(
@@ -26,13 +26,29 @@ const Page = () => {
 		} as shoppingFormI
 	);
 
-	const { push } = useRouter();
+	// const { push } = useRouter();
 	const dispatch = useAppDispatch();
+
+	const { items } = useAppSelector((store) => store.cart);
+
+	const handleCheckout = async () => {
+		const newItems = items.map((item) => {
+			return { id: item.id, quantity: item.quantity };
+		});
+		const { data } = await axios.post('/api/payment', newItems, {
+			headers: {
+				'content-type': 'application/json',
+			},
+		});
+		window.location.assign(data);
+	};
 
 	const handleUpadateFormdata = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		dispatch(getFormData(formData));
+
+		handleCheckout();
 
 		const res = await fetch('http://localhost:3000/api/shipping', {
 			method: 'POST',
@@ -43,7 +59,7 @@ const Page = () => {
 		});
 
 		const result = await res.json();
-		console.log(result);
+		// console.log(result);
 
 		if (
 			formData.email &&
@@ -54,7 +70,7 @@ const Page = () => {
 			formData.postalCode &&
 			formData.phoneNumber
 		) {
-			push('cart/shipping/payment');
+			// push('cart/shipping/payment');
 		}
 	};
 

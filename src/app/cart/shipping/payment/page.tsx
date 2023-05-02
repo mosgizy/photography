@@ -9,6 +9,7 @@ import phantom from '../../../../../resources/icon/Phantom - jpeg.png';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useAppSelector } from '../../../../../store/hooks';
+import axios from 'axios';
 
 const Page = () => {
 	const wallets = {

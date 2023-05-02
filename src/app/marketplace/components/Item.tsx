@@ -12,10 +12,11 @@ import Info from './Info';
 import useLocal from '../../../../hooks/localStorage';
 import 'react-toastify/dist/ReactToastify.css';
 import useToast from '../../../../hooks/toast';
-import { ToastContainer, toast } from 'react-toastify';
 
-const Item = ({ product }: { product: productI }) => {
-	const { id, name, creator, origin, views, price, url, size } = product;
+const Item = ({ product, dataId }: { product: productI; dataId: any }) => {
+	const { name, creator, origin, views, price, url, size } = product;
+	const id = dataId;
+
 	const dispatch = useAppDispatch();
 	const { items } = useAppSelector((store) => store.cart);
 	const [quantity, setQuantity] = useState(1);
