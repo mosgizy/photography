@@ -9,12 +9,8 @@ export async function POST(request: NextRequest) {
 
     const data = await request.json()
 
-    const newData = data.map((d:any) => {
-        return {price:d.id,quantity:d.quantity}
-    })
-
     const session = await stripe.checkout.sessions.create({
-        line_items: newData,
+        line_items: data,
         mode: 'payment',
         success_url: 'https://photography-git-main-hasterisk.vercel.app/thankYou',
         cancel_url:'https://photography-git-main-hasterisk.vercel.app/',

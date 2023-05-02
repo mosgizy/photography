@@ -33,14 +33,27 @@ const Page = () => {
 
 	const handleCheckout = async () => {
 		const newItems = items.map((item) => {
-			return { id: item.id, quantity: item.quantity };
+			return { price: item.id, quantity: item.quantity };
 		});
-		const { data } = await axios.post('/api/payment', newItems, {
-			headers: {
-				'content-type': 'application/json',
-			},
-		});
-		window.location.assign(data);
+		try {
+			// const { data } = await axios.post('/api/payment', newItems, {
+			// 	headers: {
+			// 		'content-type': 'application/json',
+			// 	},
+			// });
+			const res = await fetch('/api/payment', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(newItems),
+			});
+			const data = await res.json();
+			console.log(data);
+			window.location.assign(data);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	const handleUpadateFormdata = async (e: FormEvent<HTMLFormElement>) => {
