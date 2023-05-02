@@ -16,8 +16,8 @@ export async function POST(request: NextRequest) {
     const session = await stripe.checkout.sessions.create({
         line_items: newData,
         mode: 'payment',
-        success_url: 'http://localhost:3000/thankYou',
-        cancel_url:'http://localhost:3000',
+        success_url: 'https://photography-git-main-hasterisk.vercel.app/thankYou',
+        cancel_url:'https://photography-git-main-hasterisk.vercel.app/',
     })
 
     return NextResponse.json(session.url)

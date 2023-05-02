@@ -50,7 +50,7 @@ const Page = () => {
 
 		handleCheckout();
 
-		const res = await fetch('http://localhost:3000/api/shipping', {
+		const res = await fetch('/api/shipping', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -116,7 +116,6 @@ const Page = () => {
 										value={formData.getUpdate}
 										onChange={(e) => {
 											updateFormData({ getUpdate: e.target.checked });
-											console.log(e.target.value);
 										}}
 										className="rounded-md bg-[#d9d9d9]"
 									/>
