@@ -1,7 +1,7 @@
 import axios from "axios";
-const fetchData = async () => {
+const fetchData = async (url:string) => {
     try {
-        const response = await axios.get('http://localhost:3000/api/getProducts');
+        const response = await axios.get(url);
         return response.data;
     } catch (error) {   
         console.log(error)

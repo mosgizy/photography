@@ -26,6 +26,8 @@ const Page = () => {
 		} as shoppingFormI
 	);
 
+	const router = useRouter();
+
 	const dispatch = useAppDispatch();
 
 	const { items } = useAppSelector((store) => store.cart);
@@ -48,8 +50,7 @@ const Page = () => {
 				body: JSON.stringify(newItems),
 			});
 			const data = await res.json();
-			console.log(data);
-			window.location.assign(data);
+			router.push(data);
 		} catch (error) {
 			console.error(error);
 		}

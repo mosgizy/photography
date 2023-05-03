@@ -8,7 +8,7 @@ import fetchData from '../../../../utils/fetchData';
 
 const page = async ({ params }: { params: { product: string } }) => {
 	const { products }: { products: productI[] } = await getData(PRODUCT_URL);
-	const productItems = await fetchData();
+	// const productItems = await fetchData('../../api/getProducts/');
 
 	const { product } = params;
 	const path = product.replaceAll('%20', ' ');
@@ -17,9 +17,9 @@ const page = async ({ params }: { params: { product: string } }) => {
 		return product.name === path;
 	});
 
-	const [currentProductId] = productItems.filter((productItem: any) => {
-		return productItem.nickname === path;
-	});
+	// const [currentProductId] = productItems.filter((productItem: any) => {
+	// 	return productItem.nickname === path;
+	// });
 
 	const moreCollections = products.filter((product) => {
 		return product.name !== path;
@@ -34,7 +34,7 @@ const page = async ({ params }: { params: { product: string } }) => {
 				</p>
 			</header>
 			<div className="pt-6 px-6 md:border md:border-primary md:p-0 md:mx-auto  md:mt-12">
-				<Item product={currentProduct} dataId={currentProductId.id} />
+				<Item product={currentProduct} path={path} />
 			</div>
 			<div className="mt-12 md:hidden">
 				<Info link={'Description'} />

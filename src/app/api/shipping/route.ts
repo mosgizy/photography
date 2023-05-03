@@ -28,8 +28,6 @@ export async function POST(request: Request) {
         else
             console.log(info)
     })
-    
-    console.log(data)
 
     return NextResponse.json(data)
 }

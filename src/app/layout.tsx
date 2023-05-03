@@ -17,7 +17,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 		<html lang="en">
 			<body className="mb-10 overflow-x-hidden">
 				<Providers>
-					<NavBar products={products} />
+					{products && <NavBar products={products} />}
 					<main>{children}</main>
 				</Providers>
 			</body>
