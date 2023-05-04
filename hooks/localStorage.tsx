@@ -8,10 +8,6 @@ const useLocal = (items: cartItemI[]) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		reactLocalStorage.set('cart', JSON.stringify(items));
-	}, [items]);
-
-	useEffect(() => {
 		const localData = reactLocalStorage.get('cart');
 		const datas: cartItemI[] = JSON.parse(`${localData}`);
 
@@ -19,6 +15,10 @@ const useLocal = (items: cartItemI[]) => {
 			datas &&
 			datas.map((data: cartItemI) => dispatch(addToCart({ ...data })));
 	}, []);
+
+	useEffect(() => {
+		reactLocalStorage.set('cart', JSON.stringify(items));
+	}, [items]);
 };
 
 export default useLocal;

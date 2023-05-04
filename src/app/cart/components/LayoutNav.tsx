@@ -13,7 +13,6 @@ const LayoutNav = () => {
 
 	const handleClick = (btn: string) => {
 		if (btn === 'cart') {
-			dispatch(handleBtnClicks({ details: true }));
 			push('/cart');
 		} else if (details === true) {
 			push('/cart/shipping');

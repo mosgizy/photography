@@ -1,11 +1,11 @@
 'use client';
 
-import { useAppSelector } from '../../../../store/hooks';
+import { useAppSelector, useAppDispatch } from '../../../../store/hooks';
+import { handleBtnClicks } from '../../../../store/slice/cart';
 import CartCard from './CartCard';
 import useLocal from '../../../../hooks/localStorage';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 
 const Cart = ({ btn }: { btn: boolean }) => {
 	const { items } = useAppSelector((store) => store.cart);
@@ -13,11 +13,15 @@ const Cart = ({ btn }: { btn: boolean }) => {
 		(total, cost) => total + cost.cost * cost.quantity,
 		0
 	);
+	const dispatch = useAppDispatch();
 
 	const { push } = useRouter();
 
 	const handleSubmit = () => {
-		items.length > 0 && push('cart/shipping');
+		if (items.length > 0) {
+			push('cart/shipping');
+			dispatch(handleBtnClicks({ details: true }));
+		}
 	};
 
 	useLocal(items);
