@@ -17,6 +17,7 @@ import fetchData from '../../../../utils/fetchData';
 const Item = ({ product, path }: { product: productI; path: any }) => {
 	const { name, creator, origin, views, price, url, size } = product;
 	const [id, setId] = useState<string>('');
+	const [cost, setCost] = useState<number>(0);
 
 	const dispatch = useAppDispatch();
 	const { items } = useAppSelector((store) => store.cart);
@@ -27,10 +28,7 @@ const Item = ({ product, path }: { product: productI; path: any }) => {
 	const [tempItem] = items.filter((item) => item.id === id);
 	const sizeFt = size.ft;
 
-	console.log(id);
-
 	const handleAddToCart = () => {
-		const cost: number = price.usd;
 		const size: number = sizeFt;
 		if (!tempItem) {
 			dispatch(addToCart({ id, name, creator, url, cost, quantity, size }));
@@ -58,6 +56,7 @@ const Item = ({ product, path }: { product: productI; path: any }) => {
 				return productItem.nickname === path;
 			});
 			setId(currentProductId.id);
+			setCost(currentProductId.unit_amount / 100);
 		});
 	}, []);
 
@@ -69,7 +68,7 @@ const Item = ({ product, path }: { product: productI; path: any }) => {
 					alt={name}
 					width={800}
 					height={800}
-					className="w-[357px] h-[384px] md:h-[626px] aspect-3/2"
+					className="w-full md:w-[357px] h-[384px] md:h-[626px] aspect-3/2"
 				/>
 			</div>
 			<div className="md:flex-[0_0_60%] md:flex md:flex-col md:justify-between">

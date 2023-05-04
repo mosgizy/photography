@@ -1,14 +1,12 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-import { handleBtnClicks } from '../../../../store/slice/cart';
+import { useAppSelector } from '../../../../store/hooks';
 import { useRouter } from 'next/navigation';
 
 const LayoutNav = () => {
 	const path = usePathname().slice(1);
 	const { details } = useAppSelector((state) => state.cart.navBtn);
-	const dispatch = useAppDispatch();
 	const { push } = useRouter();
 
 	const handleClick = (btn: string) => {

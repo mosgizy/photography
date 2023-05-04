@@ -50,17 +50,20 @@ const CartCard = ({ items }: { items: cartItemI }) => {
 					<h3 className="text-xl font-bold capitalize">{name} </h3>
 					<p className="text-fadeText italic capitalize">{creator}</p>
 					<p>Size: {size}</p>
-					<div className="border-[0.5px] border-black md:border-none rounded-xl overflow-hidden flex justify-between text-xl">
+					<div className="border-[0.5px] border-black md:border-none rounded-xl overflow-hidden flex justify-between text-xl text-center md:text-left">
 						<button
 							onClick={handleDecreement}
-							className="border-r-[0.5px] px-3 md:border-none"
+							className="border-r-[0.5px] px-3 md:border-none flex-1 text-center md:text-left"
 						>
 							-
 						</button>
-						<p className="border-r-[0.5px] px-3 md:border-none">
+						<p className="border-r-[0.5px] px-3 md:border-none flex-1 text-center md:text-left">
 							{itemQuantity}
 						</p>
-						<button onClick={handleIncreement} className="px-3">
+						<button
+							onClick={handleIncreement}
+							className="px-3 flex-1 text-center"
+						>
 							+
 						</button>
 					</div>

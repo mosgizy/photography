@@ -223,7 +223,7 @@ const Page = () => {
 							</Link>
 						</div>
 					</form>
-					<div className="btn-container">
+					<div className="btn-container md:mt-0">
 						<button onClick={handleAutoFill} className="btn md:w-full md:mt-6">
 							Auto fill
 						</button>

@@ -26,6 +26,9 @@ const Cart = ({ btn }: { btn: boolean }) => {
 
 	useLocal(items);
 
+	//redirect when cart is empty
+	//need to remove to give user free will
+
 	// useEffect(() => {
 	// 	items.length === 0 && push('/marketplace');
 	// }, [items]);
