@@ -13,6 +13,8 @@ export async function POST(request: NextRequest) {
     const headersList = headers();
     const origin = headersList.get('origin');
 
+    console.log(origin)
+
     const session = await stripe.checkout.sessions.create({
         line_items: data,
         mode: 'payment',
