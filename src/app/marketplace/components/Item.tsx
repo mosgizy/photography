@@ -68,7 +68,7 @@ const Item = ({ product, path }: { product: productI; path: any }) => {
 					alt={name}
 					width={800}
 					height={800}
-					className="w-full md:w-[357px] h-[384px] md:h-[626px] aspect-3/2"
+					className="w-full md:w-[357px] h-[384px] md:h-[626px]"
 				/>
 			</div>
 			<div className="md:flex-[0_0_60%] md:flex md:flex-col md:justify-between">

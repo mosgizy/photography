@@ -10,6 +10,7 @@ import { productI } from '../../../../resources/interfaces';
 import ProductCard from './ProductCard';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import Link from 'next/link';
 
 const Collections = ({ products }: { products: productI[] }) => {
 	const responsive = {
@@ -52,20 +53,19 @@ const Collections = ({ products }: { products: productI[] }) => {
 			>
 				{products.map((product: productI) => {
 					return (
-						<div
-							key={product.id}
-							className="md:border md:border-primary md:py-2 md:px-3 md:mr-5"
-						>
-							<div className="flex justify-end text-3xl my-2">
-								<FontAwesomeIcon icon={faHeart} />
+						<Link key={product.id} href={`/marketplace/${product.name}`}>
+							<div className="md:border md:border-primary md:py-2 md:px-3 md:mr-5">
+								<div className="flex justify-end text-3xl my-2">
+									<FontAwesomeIcon icon={faHeart} />
+								</div>
+								<ProductCard
+									name={product.name}
+									url={product.url}
+									price={product.price.eth}
+									sign={true}
+								/>
 							</div>
-							<ProductCard
-								name={product.name}
-								url={product.url}
-								price={product.price.eth}
-								sign={true}
-							/>
-						</div>
+						</Link>
 					);
 				})}
 			</AliceCarousel>
