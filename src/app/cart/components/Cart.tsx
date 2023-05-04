@@ -5,6 +5,7 @@ import CartCard from './CartCard';
 import useLocal from '../../../../hooks/localStorage';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const Cart = ({ btn }: { btn: boolean }) => {
 	const { items } = useAppSelector((store) => store.cart);
@@ -20,6 +21,10 @@ const Cart = ({ btn }: { btn: boolean }) => {
 	};
 
 	useLocal(items);
+
+	// useEffect(() => {
+	// 	items.length === 0 && push('/marketplace');
+	// }, [items]);
 
 	return (
 		<div>

@@ -4,11 +4,9 @@ import Collections from '../components/Collections';
 import { productI } from '../../../../resources/interfaces';
 import { PRODUCT_URL } from '../../../../resources/constant';
 import Item from '../components/Item';
-import fetchData from '../../../../utils/fetchData';
 
 const page = async ({ params }: { params: { product: string } }) => {
 	const { products }: { products: productI[] } = await getData(PRODUCT_URL);
-	// const productItems = await fetchData('../../api/getProducts/');
 
 	const { product } = params;
 	const path = product.replaceAll('%20', ' ');
@@ -16,10 +14,6 @@ const page = async ({ params }: { params: { product: string } }) => {
 	const [currentProduct] = products.filter((product) => {
 		return product.name === path;
 	});
-
-	// const [currentProductId] = productItems.filter((productItem: any) => {
-	// 	return productItem.nickname === path;
-	// });
 
 	const moreCollections = products.filter((product) => {
 		return product.name !== path;

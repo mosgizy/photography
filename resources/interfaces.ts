@@ -79,6 +79,7 @@ export interface cartI{
     totalPrice: number;
     shipping: number;
     grandTotal: number;
+    navBtn:{details:boolean}
 }
 
 export interface shoppingFormI{

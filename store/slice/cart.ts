@@ -8,7 +8,8 @@ const initialState = {
     totalPrice:0,
     shipping:2.50,
     grandTotal: 0,
-    size: 0
+    size: 0,
+    navBtn:{details:false}
 } as cartI
 
 export const cartSlice = createSlice({
@@ -27,9 +28,12 @@ export const cartSlice = createSlice({
             let replacement = { ...tempItems, quantity: action.payload.quantity }
             state.items.splice(state.items.indexOf(tempItems),1,replacement)
         },
+        handleBtnClicks: (state, action:PayloadAction<{details:boolean}>) => {
+            state.navBtn = action.payload
+        }
     }
 })
 
-export const { addToCart,removeItemFromCart,itemQuantityChange} = cartSlice.actions
+export const { addToCart,removeItemFromCart,itemQuantityChange,handleBtnClicks} = cartSlice.actions
 
 export default cartSlice.reducer

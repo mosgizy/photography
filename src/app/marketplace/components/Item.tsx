@@ -12,13 +12,11 @@ import Info from './Info';
 import useLocal from '../../../../hooks/localStorage';
 import 'react-toastify/dist/ReactToastify.css';
 import useToast from '../../../../hooks/toast';
-import axios from 'axios';
 import fetchData from '../../../../utils/fetchData';
 
 const Item = ({ product, path }: { product: productI; path: any }) => {
 	const { name, creator, origin, views, price, url, size } = product;
 	const [id, setId] = useState<string>('');
-	// const id = dataId;
 
 	const dispatch = useAppDispatch();
 	const { items } = useAppSelector((store) => store.cart);
@@ -28,6 +26,8 @@ const Item = ({ product, path }: { product: productI; path: any }) => {
 
 	const [tempItem] = items.filter((item) => item.id === id);
 	const sizeFt = size.ft;
+
+	console.log(id);
 
 	const handleAddToCart = () => {
 		const cost: number = price.usd;
@@ -53,7 +53,7 @@ const Item = ({ product, path }: { product: productI; path: any }) => {
 	useLocal(items);
 
 	useEffect(() => {
-		const data = fetchData('/api/getProducts').then((res) => {
+		fetchData('/api/getProducts').then((res) => {
 			const [currentProductId] = res.filter((productItem: any) => {
 				return productItem.nickname === path;
 			});

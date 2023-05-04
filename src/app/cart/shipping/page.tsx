@@ -49,6 +49,7 @@ const Page = () => {
 				},
 				body: JSON.stringify(newItems),
 			});
+			console.log(items);
 			const data = await res.json();
 			router.push(data);
 		} catch (error) {
