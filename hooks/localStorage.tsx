@@ -7,21 +7,28 @@ import { reactLocalStorage } from 'reactjs-localstorage';
 const useLocal = (items: cartItemI[]) => {
 	const dispatch = useAppDispatch();
 
-	if (reactLocalStorage.get('cart') === undefined) {
+	if (
+		typeof window !== 'undefined' &&
+		reactLocalStorage.get('cart') === undefined
+	) {
 		reactLocalStorage.set('cart', JSON.stringify(items));
 	}
 
 	useEffect(() => {
-		const localData = reactLocalStorage.get('cart');
-		const datas: cartItemI[] = JSON.parse(`${localData}`);
+		if (typeof window !== 'undefined') {
+			const localData = reactLocalStorage.get('cart');
+			const datas: cartItemI[] = JSON.parse(`${localData}`);
 
-		items.length === 0 &&
-			datas &&
-			datas.map((data: cartItemI) => dispatch(addToCart({ ...data })));
+			items.length === 0 &&
+				datas &&
+				datas.map((data: cartItemI) => dispatch(addToCart({ ...data })));
+		}
 	}, []);
 
 	useEffect(() => {
-		reactLocalStorage.set('cart', JSON.stringify(items));
+		if (typeof window !== 'undefined') {
+			reactLocalStorage.set('cart', JSON.stringify(items));
+		}
 	}, [items]);
 };
 
