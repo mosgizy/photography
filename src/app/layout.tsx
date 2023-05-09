@@ -1,10 +1,10 @@
-import Providers from '../../store/provider';
 import NavBar from './component/NavBar';
 import './globals.css';
 import { productI } from '../../resources/interfaces';
 import { PRODUCT_URL } from '../../resources/constant';
 import getData from '../../utils/api';
 import { Metadata } from 'next';
+import { AppProvider } from './provider';
 
 export const metadata: Metadata = {
 	title: 'The Hills',
@@ -16,10 +16,10 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 	return (
 		<html lang="en">
 			<body className="mb-10 overflow-x-hidden">
-				<Providers>
+				<AppProvider>
 					{products && <NavBar products={products} />}
 					<main>{children}</main>
-				</Providers>
+				</AppProvider>
 			</body>
 		</html>
 	);

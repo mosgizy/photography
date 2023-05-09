@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { getFormData } from '../../../../store/slice/formSlice';
 import axios from 'axios';
+import { useSession } from 'next-auth/react';
 
 const Page = () => {
 	const [formData, updateFormData] = useReducer(
@@ -26,7 +27,11 @@ const Page = () => {
 		} as shoppingFormI
 	);
 
-	const router = useRouter();
+	const { data: session, status } = useSession();
+
+	console.log({ session }, status, 'session page');
+
+	const { push } = useRouter();
 
 	const dispatch = useAppDispatch();
 
@@ -49,9 +54,8 @@ const Page = () => {
 				},
 				body: JSON.stringify(newItems),
 			});
-			console.log(items);
 			const data = await res.json();
-			router.push(data);
+			push(data);
 		} catch (error) {
 			console.error(error);
 		}
@@ -62,17 +66,17 @@ const Page = () => {
 
 		dispatch(getFormData(formData));
 
-		handleCheckout();
+		status === 'authenticated' ? handleCheckout() : push('/login');
 
-		const res = await fetch('/api/shipping', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(formData),
-		});
+		// const res = await fetch('/api/shipping', {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// 	body: JSON.stringify(formData),
+		// });
 
-		const result = await res.json();
+		// const result = await res.json();
 		// console.log(result);
 
 		if (

@@ -1,5 +1,3 @@
-'use client';
-
 import NavBtn from './components/NavBtn';
 import Cart from './components/Cart';
 

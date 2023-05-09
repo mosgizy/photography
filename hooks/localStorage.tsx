@@ -7,6 +7,10 @@ import { reactLocalStorage } from 'reactjs-localstorage';
 const useLocal = (items: cartItemI[]) => {
 	const dispatch = useAppDispatch();
 
+	if (reactLocalStorage.get('cart') === undefined) {
+		reactLocalStorage.set('cart', JSON.stringify(items));
+	}
+
 	useEffect(() => {
 		const localData = reactLocalStorage.get('cart');
 		const datas: cartItemI[] = JSON.parse(`${localData}`);
