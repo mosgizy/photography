@@ -4,7 +4,7 @@ import { productI } from '../../resources/interfaces';
 import { PRODUCT_URL } from '../../resources/constant';
 import getData from '../../utils/api';
 import { Metadata } from 'next';
-import { AppProvider } from './provider';
+import { AppProvider } from '../../utils/provider';
 
 export const metadata: Metadata = {
 	title: 'The Hills',
