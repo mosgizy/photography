@@ -6,7 +6,8 @@ import Linking from './../component/Linking';
 import Creators from './../component/Creators';
 import Image from 'next/image';
 import { carouselI, featuredI } from '../../../resources/interfaces';
-import { motion, Variants, useTransform, useScroll } from 'framer-motion';
+import { motion, useTransform, useScroll } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 const HomePage = ({
 	featuredProducts,
@@ -15,20 +16,7 @@ const HomePage = ({
 	featuredProducts: featuredI[];
 	carousel: carouselI[];
 }) => {
-	const cardVariants: Variants = {
-		offscreen: {
-			y: 300,
-		},
-		onscreen: {
-			y: 0,
-			transition: {
-				type: 'spring',
-				bounce: 0.4,
-				duration: 0.8,
-			},
-		},
-	};
-
+	const [shuffledCarousel] = useState<carouselI[]>(carousel);
 	const shuffle = (array: any[]) => {
 		return array
 			?.map((value: any) => ({ value, sort: Math.random() }))
@@ -74,32 +62,33 @@ const HomePage = ({
 				<div className="hidden md:block mt-6">
 					<div className="flex gap-4 justify-center">
 						<div className="w-[358px] h-[332px] relative translate-y-20 overflow-hidden">
-							{shuffle(carousel).map(
-								(data: { id: string; url: string }, index: number) => {
-									return (
-										<motion.div
-											key={data.id}
-											style={{ y: yPos }}
-											transition={{
-												ease: 'linear',
-												duration: 2,
-												x: { duration: 1 },
-											}}
-											className={`h-full origin-right transition-all`}
-										>
-											<Image
-												src={data.url}
-												fill
-												alt="carousel"
-												className={`aspect-square`}
-											/>
-										</motion.div>
-									);
-								}
-							)}
+							{shuffledCarousel.map((data: { id: string; url: string }) => {
+								console.log(data.url);
+								return (
+									<motion.div
+										key={data.id}
+										style={{ y: yPos }}
+										transition={{
+											ease: 'linear',
+											duration: 2,
+											x: { duration: 1 },
+										}}
+										className={`h-full origin-right transition-all`}
+									>
+										<Image
+											src={data.url}
+											// width={768}
+											// height={20}
+											fill
+											alt="carousel"
+											className={`aspect-square`}
+										/>
+									</motion.div>
+								);
+							})}
 						</div>
 						<div className="w-[358px] h-[428x] relative translate-y-14 overflow-hidden">
-							{shuffle(carousel).map(
+							{shuffledCarousel.map(
 								(data: { id: string; url: string }, index: number) => {
 									return (
 										<motion.div
@@ -110,6 +99,8 @@ const HomePage = ({
 										>
 											<Image
 												src={data.url}
+												// width={768}
+												// height={20}
 												fill
 												alt="carousel"
 												className={`aspect-square`}
@@ -120,7 +111,7 @@ const HomePage = ({
 							)}
 						</div>
 						<div className="w-[358px] h-[444px] relative -translate-y-4 overflow-hidden">
-							{shuffle(carousel).map(
+							{shuffledCarousel.map(
 								(data: { id: string; url: string }, index: number) => {
 									return (
 										<motion.div
@@ -131,6 +122,8 @@ const HomePage = ({
 										>
 											<Image
 												src={data.url}
+												// width={768}
+												// height={20}
 												fill
 												alt="carousel"
 												className={`aspect-square`}
@@ -141,7 +134,7 @@ const HomePage = ({
 							)}
 						</div>
 						<div className="w-[358px] h-[428px] relative translate-y-11 overflow-hidden">
-							{shuffle(carousel).map(
+							{shuffledCarousel.map(
 								(data: { id: string; url: string }, index: number) => {
 									return (
 										<motion.div
@@ -152,6 +145,8 @@ const HomePage = ({
 										>
 											<Image
 												src={data.url}
+												// width={768}
+												// height={20}
 												fill
 												alt="carousel"
 												className={`aspect-square`}

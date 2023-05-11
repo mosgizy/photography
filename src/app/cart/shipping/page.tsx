@@ -7,8 +7,6 @@ import { shoppingFormI } from '../../../../resources/interfaces';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { getFormData } from '../../../../store/slice/formSlice';
-import axios from 'axios';
-// import { useSession } from 'next-auth/react';
 
 const Page = () => {
 	const [formData, updateFormData] = useReducer(
@@ -26,10 +24,6 @@ const Page = () => {
 			getUpdate: false,
 		} as shoppingFormI
 	);
-
-	// const { data: session, status } = useSession();
-
-	// console.log({ session }, status, 'session page');
 
 	const { push } = useRouter();
 
@@ -67,8 +61,6 @@ const Page = () => {
 		dispatch(getFormData(formData));
 
 		handleCheckout();
-
-		// status === 'authenticated' ? handleCheckout() : push('/login');
 
 		// const res = await fetch('/api/shipping', {
 		// 	method: 'POST',
