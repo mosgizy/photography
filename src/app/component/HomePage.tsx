@@ -17,12 +17,12 @@ const HomePage = ({
 	carousel: carouselI[];
 }) => {
 	const [shuffledCarousel] = useState<carouselI[]>(carousel);
-	const shuffle = (array: any[]) => {
-		return array
-			?.map((value: any) => ({ value, sort: Math.random() }))
-			.sort((a: any, b: any) => a.sort - b.sort)
-			.map(({ value }: any) => value);
-	};
+	// const shuffle = (array: any[]) => {
+	// 	return array
+	// 		?.map((value: any) => ({ value, sort: Math.random() }))
+	// 		.sort((a: any, b: any) => a.sort - b.sort)
+	// 		.map(({ value }: any) => value);
+	// };
 
 	const { scrollYProgress } = useScroll();
 	const yPos = useTransform(scrollYProgress, [0, 1000], [0, -700]);
