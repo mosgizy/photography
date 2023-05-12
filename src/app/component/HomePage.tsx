@@ -7,6 +7,9 @@ import Creators from './../component/Creators';
 import Image from 'next/image';
 import { carouselI, featuredI } from '../../../resources/interfaces';
 import { motion, useTransform, useScroll } from 'framer-motion';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import shuffle from '../../../utils/shuffle';
 import { useState, useEffect } from 'react';
 
 const HomePage = ({
@@ -16,16 +19,33 @@ const HomePage = ({
 	featuredProducts: featuredI[];
 	carousel: carouselI[];
 }) => {
-	const [shuffledCarousel] = useState<carouselI[]>(carousel);
-	// const shuffle = (array: any[]) => {
-	// 	return array
-	// 		?.map((value: any) => ({ value, sort: Math.random() }))
-	// 		.sort((a: any, b: any) => a.sort - b.sort)
-	// 		.map(({ value }: any) => value);
-	// };
+	const randomImages = carousel.map((data) => {
+		return (
+			<div key={data.id} className="h-96">
+				<Image
+					src={data.url}
+					width={768}
+					height={30}
+					alt="carousel"
+					className="h-full object-cover aspect-[2/3]"
+				/>
+			</div>
+		);
+	});
 
-	const { scrollYProgress } = useScroll();
-	const yPos = useTransform(scrollYProgress, [0, 1000], [0, -700]);
+	const carouselContainer = (data: carouselI[]) => (
+		<AliceCarousel
+			items={data}
+			autoPlay
+			infinite
+			autoPlayInterval={1000}
+			disableButtonsControls={true}
+			disableDotsControls={true}
+			animationType="slide"
+			animationDuration={200}
+			ssrSilentMode
+		/>
+	);
 
 	return (
 		<section className="overflow overflow-hidden">
@@ -62,99 +82,16 @@ const HomePage = ({
 				<div className="hidden md:block mt-6">
 					<div className="flex gap-4 justify-center">
 						<div className="w-[358px] h-[332px] relative translate-y-20 overflow-hidden">
-							{shuffledCarousel.map((data: { id: string; url: string }) => {
-								console.log(data.url);
-								return (
-									<motion.div
-										key={data.id}
-										style={{ y: yPos }}
-										transition={{
-											ease: 'linear',
-											duration: 2,
-											x: { duration: 1 },
-										}}
-										className={`h-full origin-right transition-all`}
-									>
-										<Image
-											src={data.url}
-											// width={768}
-											// height={20}
-											fill
-											alt="carousel"
-											className={`aspect-square`}
-										/>
-									</motion.div>
-								);
-							})}
+							{carouselContainer(shuffle(randomImages))}
 						</div>
 						<div className="w-[358px] h-[428x] relative translate-y-14 overflow-hidden">
-							{shuffledCarousel.map(
-								(data: { id: string; url: string }, index: number) => {
-									return (
-										<motion.div
-											key={data.id}
-											style={{ y: yPos }}
-											transition={{ duration: 2, delay: 20 }}
-											className={`h-full origin-right transition-all`}
-										>
-											<Image
-												src={data.url}
-												// width={768}
-												// height={20}
-												fill
-												alt="carousel"
-												className={`aspect-square`}
-											/>
-										</motion.div>
-									);
-								}
-							)}
+							{carouselContainer(shuffle(randomImages))}
 						</div>
 						<div className="w-[358px] h-[444px] relative -translate-y-4 overflow-hidden">
-							{shuffledCarousel.map(
-								(data: { id: string; url: string }, index: number) => {
-									return (
-										<motion.div
-											key={data.id}
-											style={{ y: yPos }}
-											transition={{ duration: 5, delay: 1 }}
-											className={`h-full origin-right transition-all`}
-										>
-											<Image
-												src={data.url}
-												// width={768}
-												// height={20}
-												fill
-												alt="carousel"
-												className={`aspect-square`}
-											/>
-										</motion.div>
-									);
-								}
-							)}
+							{carouselContainer(shuffle(randomImages))}
 						</div>
 						<div className="w-[358px] h-[428px] relative translate-y-11 overflow-hidden">
-							{shuffledCarousel.map(
-								(data: { id: string; url: string }, index: number) => {
-									return (
-										<motion.div
-											key={data.id}
-											style={{ y: yPos }}
-											transition={{ duration: 7.5, delay: 10 }}
-											className={`h-full origin-right transition-all`}
-										>
-											<Image
-												src={data.url}
-												// width={768}
-												// height={20}
-												fill
-												alt="carousel"
-												className={`aspect-square`}
-											/>
-										</motion.div>
-									);
-								}
-							)}
+							{carouselContainer(shuffle(randomImages))}
 						</div>
 					</div>
 				</div>

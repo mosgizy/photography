@@ -32,6 +32,8 @@ const CarouselWrapper = ({ products }: { products: productBidI[] }) => {
 	return (
 		<AliceCarousel
 			mouseTracking
+			touchTracking
+			autoPlay
 			animationType="slide"
 			// disableDotsControls={true}
 			keyboardNavigation={true}

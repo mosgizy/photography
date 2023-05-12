@@ -36,6 +36,12 @@ const Collections = ({ products }: { products: productI[] }) => {
 
 			<AliceCarousel
 				mouseTracking
+				touchTracking
+				// infinite
+				// autoPlay
+				// autoPlayDirection="rtl"
+				// autoPlayInterval={1000}
+				// autoPlayStrategy="none"
 				animationType="slide"
 				disableDotsControls={true}
 				keyboardNavigation={true}
