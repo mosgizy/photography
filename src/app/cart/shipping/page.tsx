@@ -62,7 +62,7 @@ const Page = () => {
 
 		dispatch(getFormData(formData));
 
-		handleCheckout();
+		status === 'authenticated' ? handleCheckout() : push('login');
 
 		// const res = await fetch('/api/shipping', {
 		// 	method: 'POST',
@@ -106,6 +106,8 @@ const Page = () => {
 	status === 'authenticated' &&
 		session &&
 		dispatch(addUserData(session?.user as userDetailsI));
+
+	console.log(status);
 
 	useEffect(() => {
 		const func = () => {
