@@ -62,7 +62,7 @@ const Page = () => {
 		dispatch(getFormData(formData));
 		console.log(formData);
 
-		status === 'authenticated' ? handleCheckout() : push('/login');
+		handleCheckout();
 
 		// const res = await fetch('/api/shipping', {
 		// 	method: 'POST',

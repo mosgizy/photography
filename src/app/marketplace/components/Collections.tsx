@@ -36,6 +36,7 @@ const Collections = ({ products }: { products: productI[] }) => {
 
 			<AliceCarousel
 				mouseTracking
+				touchTracking
 				animationType="slide"
 				disableDotsControls={true}
 				keyboardNavigation={true}

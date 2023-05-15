@@ -2,10 +2,14 @@ import { Poppins } from 'next/font/google';
 import getData from '../../utils/api';
 import { carouselI, featuredI } from '../../resources/interfaces';
 import { PRODUCT_URL, CAROUSEL_URL } from '../../resources/constant';
-import HomePage from './component/HomePage';
 import Footer from './component/Footer';
+import dynamic from 'next/dynamic';
 
 const poppins = Poppins({ subsets: ['latin'], weight: '400' });
+
+const HomePage = dynamic(() => import('./component/HomePage'), {
+	ssr: false,
+});
 
 const Home = async () => {
 	const { carousel }: { carousel: carouselI[] } = await getData(CAROUSEL_URL);

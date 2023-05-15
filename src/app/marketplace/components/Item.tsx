@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import useToast from '../../../../hooks/toast';
 import fetchData from '../../../../utils/fetchData';
 
-const Item = ({ product, path }: { product: productI; path: any }) => {
+const Item = ({ product, path }: { product: productI; path: string }) => {
 	const { name, creator, origin, views, price, url, size } = product;
 	const [id, setId] = useState<string>('');
 	const [cost, setCost] = useState<number>(0);
@@ -51,14 +51,18 @@ const Item = ({ product, path }: { product: productI; path: any }) => {
 	useLocal(items);
 
 	useEffect(() => {
-		fetchData('/api/getProducts').then((res) => {
-			const [currentProductId] = res.filter((productItem: any) => {
-				return productItem.nickname === path;
+		try {
+			fetchData('/api/getProducts').then((res) => {
+				const [currentProductId] = res.filter((productItem: any) => {
+					return productItem.nickname === path;
+				});
+				setId(currentProductId.id);
+				setCost(currentProductId.unit_amount / 100);
 			});
-			setId(currentProductId.id);
-			setCost(currentProductId.unit_amount / 100);
-		});
-	}, []);
+		} catch (error) {
+			console.error(error);
+		}
+	}, [path]);
 
 	return (
 		<div className="md:flex">
