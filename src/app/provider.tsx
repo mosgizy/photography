@@ -10,8 +10,8 @@ type Props = {
 
 export const AppProvider = ({ children }: Props) => {
 	return (
-		<SessionProvider>
-			<Provider store={store}>{children}</Provider>
-		</SessionProvider>
+		<Provider store={store}>
+			<SessionProvider>{children}</SessionProvider>
+		</Provider>
 	);
 };

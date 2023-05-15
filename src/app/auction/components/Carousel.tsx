@@ -33,7 +33,6 @@ const CarouselWrapper = ({ products }: { products: productBidI[] }) => {
 		<AliceCarousel
 			mouseTracking
 			animationType="slide"
-			// disableDotsControls={true}
 			keyboardNavigation={true}
 			responsive={responsive}
 			renderPrevButton={() => (

@@ -97,3 +97,14 @@ export interface toastI{
     notify: () => void;
     toastContainer: JSX.Element;
 }
+
+export interface userI{
+    user: userDetailsI;
+    status: string;
+}
+
+export interface userDetailsI{
+    image: string;
+    email: string;
+    name: string;
+}

@@ -3,17 +3,18 @@
 import Link from 'next/link';
 import Cart from '../components/Cart';
 import { useReducer, FormEvent } from 'react';
-import { shoppingFormI } from '../../../../resources/interfaces';
+import { shoppingFormI, userDetailsI } from '../../../../resources/interfaces';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { getFormData } from '../../../../store/slice/formSlice';
-import axios from 'axios';
 import { useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+import { addUserData } from '../../../../store/slice/user';
 
 const Page = () => {
 	const [formData, updateFormData] = useReducer(
 		(state: shoppingFormI, action: any) => {
-			return { ...state, ...action };
+			return { ...state, ...action } as shoppingFormI;
 		},
 		{
 			email: '',
@@ -29,8 +30,6 @@ const Page = () => {
 
 	const { data: session, status } = useSession();
 
-	console.log({ session }, status, 'session page');
-
 	const { push } = useRouter();
 
 	const dispatch = useAppDispatch();
@@ -42,11 +41,6 @@ const Page = () => {
 			return { price: item.id, quantity: item.quantity };
 		});
 		try {
-			// const { data } = await axios.post('/api/payment', newItems, {
-			// 	headers: {
-			// 		'content-type': 'application/json',
-			// 	},
-			// });
 			const res = await fetch('/api/payment', {
 				method: 'POST',
 				headers: {
@@ -55,6 +49,7 @@ const Page = () => {
 				body: JSON.stringify(newItems),
 			});
 			const data = await res.json();
+			setStripeUrl(data);
 			push(data);
 		} catch (error) {
 			console.error(error);
@@ -65,6 +60,7 @@ const Page = () => {
 		e.preventDefault();
 
 		dispatch(getFormData(formData));
+		console.log(formData);
 
 		status === 'authenticated' ? handleCheckout() : push('/login');
 
@@ -105,6 +101,20 @@ const Page = () => {
 		});
 	};
 
+	useEffect(() => {
+		dispatch(getFormData(formData));
+	}, [formData]);
+
+	const [stripeUrl, setStripeUrl] = useState<string>('');
+
+	status === 'authenticated' &&
+		session &&
+		dispatch(addUserData(session?.user as userDetailsI));
+
+	useEffect(() => {
+		status === 'authenticated' && stripeUrl !== '' && push(stripeUrl);
+	}, [status]);
+
 	return (
 		<section className="section">
 			<header className="md:hidden">
@@ -131,7 +141,7 @@ const Page = () => {
 									<input
 										type="checkbox"
 										name="check"
-										value={formData.getUpdate}
+										// value={formData.getUpdate}
 										onChange={(e) => {
 											updateFormData({ getUpdate: e.target.checked });
 										}}

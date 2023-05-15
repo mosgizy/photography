@@ -4,11 +4,10 @@ import Image from 'next/image';
 import thankYou from '../../../resources/images/Woman get online delivery.png';
 import ellipse from '../../../resources/images/Ellipse 7.png';
 import ellipse1 from '../../../resources/images/Ellipse 8.png';
-import { useAppSelector } from '../../../store/hooks';
+import { useSession } from 'next-auth/react';
 
 const Page = () => {
-	const { name } = useAppSelector((state) => state.form.details);
-
+	const { data: session } = useSession();
 	return (
 		<section className="section">
 			<div className="flex justify-center items-center backdrop-blur-2xl relative">
@@ -26,8 +25,8 @@ const Page = () => {
 			</div>
 			<div className="flex flex-col gap-6 items-center text-center mt-6">
 				<p className="text-lg">
-					Hey <span className="capitalize">{name}</span>, thank you for your
-					purchase.{' '}
+					Hey <span className="capitalize">{session?.user?.name}</span>, thank
+					you for your purchase.{' '}
 				</p>
 				<p className="text-fadeText text-base">
 					You are amazing. Cheers to being{' '}
