@@ -13,7 +13,7 @@ const Page = () => {
 
 	const dispatch = useAppDispatch();
 	dispatch(clearCart());
-	if (window) {
+	if (typeof window !== 'undefined') {
 		localStorage.clear();
 	}
 

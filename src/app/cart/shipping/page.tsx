@@ -121,7 +121,6 @@ const Page = () => {
 			(status !== 'authenticated' && items.length === 0) ||
 			items.length === 0
 		) {
-			console.log(status, items);
 			push('/cart');
 		}
 	}, [status]);

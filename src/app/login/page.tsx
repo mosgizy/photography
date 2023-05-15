@@ -34,7 +34,7 @@ const LoginPage = () => {
 	);
 
 	useEffect(() => {
-		status === 'authenticated' && push('/cart/shipping');
+		// status === 'authenticated' && push('/cart/shipping');
 	}, [status]);
 
 	return <div>{status === 'authenticated' ? signOutPage : signInPage}</div>;
