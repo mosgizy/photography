@@ -3,6 +3,7 @@ import GithubProvider from 'next-auth/providers/github'
 import type { NextAuthOptions } from "next-auth";
 
 const handler = NextAuth({
+  site: process.env.NEXTAUTH_URL,
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,

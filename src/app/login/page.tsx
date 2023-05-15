@@ -8,8 +8,6 @@ const LoginPage = () => {
 	const { status } = useSession();
 	const { push } = useRouter();
 
-	console.log(status);
-
 	const handleSignIn = () => {
 		signIn();
 	};
