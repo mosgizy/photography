@@ -10,6 +10,7 @@ import { getFormData } from '../../../../store/slice/formSlice';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { addUserData } from '../../../../store/slice/user';
+import { clearCart } from '../../../../store/slice/cart';
 
 const Page = () => {
 	const [formData, updateFormData] = useReducer(
@@ -60,7 +61,6 @@ const Page = () => {
 		e.preventDefault();
 
 		dispatch(getFormData(formData));
-		console.log(formData);
 
 		handleCheckout();
 
@@ -101,10 +101,6 @@ const Page = () => {
 		});
 	};
 
-	useEffect(() => {
-		dispatch(getFormData(formData));
-	}, [formData]);
-
 	const [stripeUrl, setStripeUrl] = useState<string>('');
 
 	status === 'authenticated' &&
@@ -112,7 +108,22 @@ const Page = () => {
 		dispatch(addUserData(session?.user as userDetailsI));
 
 	useEffect(() => {
-		status === 'authenticated' && stripeUrl !== '' && push(stripeUrl);
+		const func = () => {
+			dispatch(clearCart());
+			if (window) {
+				localStorage.clear();
+			}
+			push(stripeUrl);
+		};
+		status === 'authenticated' && stripeUrl !== '' && func();
+
+		if (
+			(status !== 'authenticated' && items.length === 0) ||
+			items.length === 0
+		) {
+			console.log(status, items);
+			push('/cart');
+		}
 	}, [status]);
 
 	return (

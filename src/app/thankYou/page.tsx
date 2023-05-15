@@ -5,9 +5,18 @@ import thankYou from '../../../resources/images/Woman get online delivery.png';
 import ellipse from '../../../resources/images/Ellipse 7.png';
 import ellipse1 from '../../../resources/images/Ellipse 8.png';
 import { useSession } from 'next-auth/react';
+import { useAppDispatch } from '../../../store/hooks';
+import { clearCart } from '../../../store/slice/cart';
 
 const Page = () => {
 	const { data: session } = useSession();
+
+	const dispatch = useAppDispatch();
+	dispatch(clearCart());
+	if (window) {
+		localStorage.clear();
+	}
+
 	return (
 		<section className="section">
 			<div className="flex justify-center items-center backdrop-blur-2xl relative">

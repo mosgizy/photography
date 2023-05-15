@@ -21,7 +21,7 @@ const HomePage = ({
 }) => {
 	const randomImages = carousel.map((data) => {
 		return (
-			<div key={data.id} className="h-96">
+			<div key={data.id} className="h-full">
 				<Image
 					src={data.url}
 					width={768}

@@ -10,8 +10,4 @@ const nextConfig = {
 
 module.exports = {
 	...nextConfig,
-	// env: {
-	// 	GITHUB_ID: process.env.GITHUB_ID,
-	// 	GITHUB_SECREET: process.env.GITHUB_SECREET,
-	// },
 };

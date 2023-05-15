@@ -30,10 +30,13 @@ export const cartSlice = createSlice({
         },
         handleBtnClicks: (state, action:PayloadAction<{details:boolean}>) => {
             state.navBtn = action.payload
+        },
+        clearCart: (state) => {
+            state.items = []
         }
     }
 })
 
-export const { addToCart,removeItemFromCart,itemQuantityChange,handleBtnClicks} = cartSlice.actions
+export const { addToCart,clearCart,removeItemFromCart,itemQuantityChange,handleBtnClicks} = cartSlice.actions
 
 export default cartSlice.reducer
