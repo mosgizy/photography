@@ -100,7 +100,7 @@ export interface toastI{
 
 export interface userI{
     user: userDetailsI;
-    status: string;
+    modal: boolean;
 }
 
 export interface userDetailsI{

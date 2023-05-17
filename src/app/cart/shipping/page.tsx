@@ -9,8 +9,9 @@ import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { getFormData } from '../../../../store/slice/formSlice';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { addUserData } from '../../../../store/slice/user';
+import { addUserData, setModal } from '../../../../store/slice/user';
 import { clearCart } from '../../../../store/slice/cart';
+import useToast from '../../../../hooks/toast';
 
 const Page = () => {
 	const [formData, updateFormData] = useReducer(
@@ -36,6 +37,7 @@ const Page = () => {
 	const dispatch = useAppDispatch();
 
 	const { items } = useAppSelector((store) => store.cart);
+	const { modal } = useAppSelector((state) => state.user);
 
 	const handleCheckout = async () => {
 		const newItems = items.map((item) => {
@@ -62,7 +64,8 @@ const Page = () => {
 
 		dispatch(getFormData(formData));
 
-		handleCheckout();
+		status === 'authenticated' && handleCheckout();
+		status === 'unauthenticated' && dispatch(setModal(true));
 
 		// const res = await fetch('/api/shipping', {
 		// 	method: 'POST',
@@ -74,18 +77,6 @@ const Page = () => {
 
 		// const result = await res.json();
 		// console.log(result);
-
-		if (
-			formData.email &&
-			formData.name &&
-			formData.walletType &&
-			formData.city &&
-			formData.country &&
-			formData.postalCode &&
-			formData.phoneNumber
-		) {
-			// push('cart/shipping/payment');
-		}
 	};
 
 	const handleAutoFill = () => {
@@ -107,23 +98,30 @@ const Page = () => {
 		session &&
 		dispatch(addUserData(session?.user as userDetailsI));
 
+	const { notify } = useToast(
+		`${status === 'authenticated' && 'Welcome ' + session.user?.name}`
+	);
+
 	useEffect(() => {
 		const func = () => {
 			dispatch(clearCart());
 			if (window) {
 				localStorage.clear();
 			}
+			notify();
 			push(stripeUrl);
 		};
 		status === 'authenticated' && stripeUrl !== '' && func();
+	}, [status]);
 
+	useEffect(() => {
 		if (
 			(status !== 'authenticated' && items.length === 0) ||
 			items.length === 0
 		) {
 			push('/cart');
 		}
-	}, [status]);
+	}, []);
 
 	return (
 		<section className="section">

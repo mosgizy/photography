@@ -9,7 +9,7 @@ const initialState = {
         email: '',
         name: ''
     },
-    status:'',  
+    modal:false,  
 } as userI
 
 export const userSlice = createSlice({
@@ -18,10 +18,14 @@ export const userSlice = createSlice({
     reducers: {
         addUserData: (state, action:PayloadAction<userDetailsI>) => {
             state.user= action.payload
+        },
+
+        setModal: (state, action: PayloadAction<boolean>) => {
+            state.modal= action.payload
         }
     }
 })
 
-export const { addUserData} = userSlice.actions
+export const { addUserData,setModal} = userSlice.actions
 
 export default userSlice.reducer
