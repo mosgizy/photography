@@ -105,7 +105,7 @@ const Page = () => {
 	useEffect(() => {
 		const func = () => {
 			dispatch(clearCart());
-			if (window) {
+			if (typeof window !== 'undefined') {
 				localStorage.clear();
 			}
 			notify();
