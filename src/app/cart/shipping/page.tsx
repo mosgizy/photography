@@ -116,7 +116,9 @@ const Page = () => {
 
 	useEffect(() => {
 		if (
-			(status !== 'authenticated' && items.length === 0) ||
+			(status !== 'authenticated' &&
+				status !== 'loading' &&
+				items.length === 0) ||
 			items.length === 0
 		) {
 			push('/cart');
