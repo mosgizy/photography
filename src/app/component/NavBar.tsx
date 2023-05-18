@@ -96,7 +96,7 @@ const NavBar = ({ products }: { products: productI[] }) => {
 						/>
 					</Link>
 					<div className="relative" onClick={() => dispatch(setModal(!modal))}>
-						<FontAwesomeIcon icon={faUser} className="hidden md:block" />
+						<FontAwesomeIcon icon={faUser} className="" />
 						<div
 							className={`absolute shadow-3xl bg-white text-center right-0 py-2 px-5 mt-2 rounded-xl ${
 								modal ? 'flex flex-col gap-2' : 'hidden'
